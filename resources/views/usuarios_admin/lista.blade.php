@@ -14,6 +14,9 @@
   button{
     border:none;
   }
+  input{
+    text-transform: uppercase;
+  }
 
   .btn-mas{background:#95B359!important;border:none}
   .btn-mred{border:none}

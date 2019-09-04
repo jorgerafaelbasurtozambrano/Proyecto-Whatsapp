@@ -1,3 +1,9 @@
+<style>
+  input
+  {
+    text-transform: uppercase;
+  }
+</style>
 <div class="row">
   <div class="col-md-12 col-sm-12 col-xs-12">
   <div class="x_title">
@@ -9,7 +15,7 @@
             <br />
             <form data-parsley-validate class="form-horizontal form-label-left">
             <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                        <input type="text" class="form-control has-feedback-left" id="nombre_usuarionuevo" placeholder="Nombres">
+                        <input  type="text" class="form-control has-feedback-left" id="nombre_usuarionuevo" placeholder="Nombres">
                         <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
                       </div>
 

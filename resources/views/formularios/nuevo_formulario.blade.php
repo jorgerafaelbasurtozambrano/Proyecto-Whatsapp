@@ -1,3 +1,9 @@
+<style>
+  input
+  {
+    text-transform: uppercase;
+  }
+</style>
 <div class="row">
   <div class="col-md-12 col-sm-12 col-xs-12">
     <div class="x_panel">
@@ -39,14 +45,14 @@
                     </select>
                     <span class="" aria-hidden="true"></span>
             </div>
-        
+
             <div class="clearfix"></div>
             <br>
             <h2>Respuesta:</h2>
             <div class="col-md-11 col-sm-11 col-xs-11 form-group has-feedback">
                     <input type="number" class="col-md-1 col-sm-1 col-xs-1 form-control" id="puntuacion_preguntas" style="width:8%;margin-right:20px;padding:1%" placeholder="N°">
                     <input type="text" class="col-md-11 col-sm-11 col-xs-11 form-control" style="width:89.7%" id="descripcion_pregunta" placeholder="Respuesta">
-                    
+
             </div>
             <div class="col-md-1 col-sm-1 col-xs-1 form-group has-feedback text-center " >
                 <button id="nueva_respuesta" type="button" class="glyphicon glyphicon-plus btn-success btn-mas"></button>
@@ -87,7 +93,7 @@
                             <th class="column-title">Pregunta</th>
                             <th class="column-title ">Opciones </th>
                             <th class="column-title">Respuestas </th>
-                       
+
                             </th>
                           </tr>
                         </thead>
@@ -96,9 +102,9 @@
                         </tbody>
                       </table>
                     </div>
-							
-              
-						
+
+
+
                   </div>
                 </div>
               </div>
