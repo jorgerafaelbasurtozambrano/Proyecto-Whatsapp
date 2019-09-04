@@ -39,7 +39,7 @@ $(document).ready(function (){
             }
           });
           var formData={
-            nombre_formulario:$('#titulo_formulario').val(),
+            nombre_formulario:$('#titulo_formulario').val().toUpperCase(),
             fecha_actual:fecha,
           };
           $.ajax({
@@ -71,7 +71,7 @@ $(document).ready(function (){
             }
           });
           var formData={
-            nombre_pregunta:$('#titulo_pregunta').val(),
+            nombre_pregunta:$('#titulo_pregunta').val().toUpperCase(),
             id_formulario:id_formulario_nuevo,
           };
           $.ajax({
@@ -110,7 +110,7 @@ $(document).ready(function (){
               var formData={
                 id_pregunta:$('#select_pregruntas').val(),
                 puntuacion:$('#puntuacion_preguntas').val(),
-                pregunta_descripcion:$('#descripcion_pregunta').val(),
+                pregunta_descripcion:$('#descripcion_pregunta').val().toUpperCase(),
               };
               $.ajax({
                 type:'POST',
@@ -203,7 +203,7 @@ $(document).ready(function (){
               var formData={
                 id_pregunta:id_nuevo_pregunta,
                 puntuacion:$('#puntuacion_preguntas_ac').val(),
-                pregunta_descripcion:$('#descripcion_pregunta_ac').val(),
+                pregunta_descripcion:$('#descripcion_pregunta_ac').val().toUpperCase(),
               };
               $.ajax({
                 type:'POST',

@@ -7,6 +7,17 @@ $(document).ready(function (){
       llenarSelect();
       $('#modal_envio').modal('show');
   })
+  $('#star_mensajes').on('click',function() {
+    var cantidad=$("#lista_usuarios").children().length;
+    // for (let i=0;i<=cantidad;i++) {
+    //   var dato=$("#lista_usuarios").children()[i];
+    //   console.log(dato.value;
+    // }
+    $("#lista_usuarios").each(function( index ) {
+      console.log($(this).text();
+    });
+  })
+
   function recorrerTabla() {
       var seleccionados=0;
       $('#lista_usuarios').html("");
@@ -136,7 +147,7 @@ $('#nuevo_usuario').on('click', function(){
             }
           });
           var formData={
-            nombre:$('#nombre_usuarionuevo').val(),
+            nombre:$('#nombre_usuarionuevo').val().toUpperCase(),
             telefono:$('#numero_usuarionuevo').val(),
           };
           $.ajax({
@@ -162,7 +173,7 @@ $('#nuevo_usuario').on('click', function(){
           });
     }else if($('#nuevo_usuario').val()=='actualizar'){
         var formData={
-            nombre:$('#nombre_usuarionuevo').val(),
+            nombre:$('#nombre_usuarionuevo').val().toUpperCase(),
             telefono:$('#numero_usuarionuevo').val(),
             id:id_usuario,
           };
