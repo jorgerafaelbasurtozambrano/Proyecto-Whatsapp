@@ -36,7 +36,7 @@
                             <th class="column-title">Chat ID </th>
                             <th class="column-title ">Opciones </th>
                             <th class="bulk-actions" colspan="7">
-                              <a class="antoo" style="color:#fff; font-weight:500;">Usuarios Seleccionados ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
+                              <a class="antoo" >Usuarios Seleccionados <span class="action-cnt"> </span> </a>
                             </th>
                           </tr>
                         </thead>
