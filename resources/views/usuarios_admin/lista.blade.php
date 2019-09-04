@@ -35,7 +35,7 @@
                             <th class="column-title">Numero </th>
                             <th class="column-title">Chat ID </th>
                             <th class="column-title ">Opciones </th>
-                            <th class="bulk-actions" colspan="4">
+                            <th class="bulk-actions" colspan="7">
                               <a class="antoo" style="color:#fff; font-weight:500;">Usuarios Seleccionados ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
                             </th>
                           </tr>
@@ -50,7 +50,6 @@
                                  $seleccion_nombre = $data['id'].'nombre';
                                  $seleccion_numero = $data['id'].'numero';
                                ?>
-
                                <td class=" " id=<?php echo $seleccion_nombre?> >{{$data['nombre']}}</td>
                                <td class=" " id=<?php echo $seleccion_numero?> >{{$data['numero_telefono']}}</td>
                                <td class=" " >{{$data['chatid']}}</td>
