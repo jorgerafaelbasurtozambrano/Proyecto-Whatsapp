@@ -48,7 +48,7 @@
     <link href="{{'/css/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css'}}" rel="stylesheet">
     <link href="{{'/css/datatables.net-responsive-bs/css/responsive.bootstrap.min.css'}}" rel="stylesheet">
     <link href="{{'/css/datatables.net-scroller-bs/css/scroller.bootstrap.min.css'}}" rel="stylesheet">
-
+    <script src="https://use.fontawesome.com/119ed3079a.js"></script>
     <style>
     </style>
   <script>

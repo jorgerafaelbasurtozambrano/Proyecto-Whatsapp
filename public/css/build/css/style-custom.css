@@ -11,6 +11,10 @@ h1,h2,h3,h4,h5,h6{
     color: #212b36!important;
 }
 
+.h-fix{
+    font-size:1.8rem;
+}
+
 .border-r{
     border-radius:5px;
     background-color:#F7F7F7;
@@ -139,6 +143,10 @@ div.left_col.scroll-view{
 .nav.child_menu>li>a{
     font-size:14px;
 }
+
+.x_title_fix{
+    margin: 8.4rem 0 2.4em 5px;
+}
   
 a{
     font-size:16px;
@@ -225,13 +233,19 @@ button{
       background: linear-gradient(to bottom, #6371c7, #5563c1)!important;
       padding:10px;
   }
-
+.boton-guardar>button:hover{
+    background: llinear-gradient(180deg,#424c8c,#4959bd)!important;
+}
 .btn-form-nuevouser{
     width:80%;
 }
 
 .text-center{
     text-align: center;
+}
+
+.top_search .form-control:focus{
+    border-right:1px solid rgba(221,226,232,.49);
 }
 /************************/
 
