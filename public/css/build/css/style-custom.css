@@ -26,14 +26,29 @@ body .container.body .right_col{
   }
 
 .left_col{
-    background-color:#ffffff;
+    background-color:#363636;
+    width: 216px!important;;
   }
 .col-custom{
-    margin-top:56px;
+    margin-top:37px;
+}
+.nav.side-menu>li.active>a{
+    background: #1ABB9C;
 }
 
-/********************************************/
+.nav-md ul.nav.child_menu li:before{
+    background: transparent;
+}
 
+.nav-md ul.nav.child_menu li:after{
+    border:none;
+}
+/********************************************/
+/**********BOTON PANEL*****************/
+.nav.side-menu>li.active>a{
+    box-shadow:none;
+}
+/**************************************/
 /****************PANEL DERECHO***************/
 .main_container .top_nav{
     margin-left:0px;
@@ -52,8 +67,6 @@ a{
     font-size:16px;
 }
   
-  
-  
 select{
     border-radius:3px!important;
 }
@@ -62,17 +75,27 @@ select{
 /**********PANEL LOGIN***********/
   .title{
     font-size: 12px;
-    margin: 16px 0px;
+    margin: 10px 0px;
     text-transform:uppercase;
   }
   .nav-gaia{
-    background-color:#95B359!important;
+    background-color: #262525!important;
     color:#ffffff;
     font-weight:600;
   }
 
   #menu_toggle>i{
-      font-size:14px;
+      font-size:17px;
+  }
+
+  .toggle{
+    padding-top:5px;
+    margin-right:-26px;
+  }
+
+  .nav>span{
+      margin-left:18px;
+      font-size:17px;
   }
 /*******************************/
 
