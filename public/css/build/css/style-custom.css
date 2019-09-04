@@ -1,0 +1,65 @@
+.border-r{
+  border-radius:5px;
+  background-color:#ffffff!important;
+}
+body .container.body .right_col{
+  background-color:#ffffff;
+}
+
+input{
+  border-radius:2px!important;
+}
+
+.x_panel{
+  border-radius:5px;
+  background-color:#F7F7F7;
+}
+
+.nav.child_menu>li>a{
+  font-size:14px;
+}
+
+a{
+  font-size:16px;
+}
+
+.c-refresh>li>a:hover{
+  background-color:transparent;
+}
+
+.btn-mas-form-user{
+  background:#95B359!important;
+}
+
+.btn-mas{
+    width: 31px;height: 31px;border-radius: 50%;
+    background:#95B359!important;
+}
+
+select{
+  border-radius:3px!important;
+}
+
+th{
+    border-right:4px solid #ffffff;
+    text-align:center;
+    text-transform: uppercase;
+  }
+
+  td{text-align:center;vertical-align:middle!important;border-right:4px solid #ffffff;border-bottom:4px solid #ffffff!important;background-color:#f9f9f9!important;}
+
+  .td-fix{border:none!important;}
+  .td-fix:last-child{border-bottom:4px solid #ffffff!important;}
+
+  td:last-child{
+    border:none;
+    border-left:4px solid #ffffff;
+  }
+
+  th:last-child{
+    border:none!important;
+  }
+
+button,input{
+  border:none!important;
+}

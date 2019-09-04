@@ -28,7 +28,6 @@ a{
   background-color:transparent;
 }
 
-.btn-mas{background:#95B359!important;border:none}
 </style>
 
 <div class="row">
@@ -55,7 +54,7 @@ a{
                       <div class="form-group text-center">
                         <div class="col-md-12 col-sm-12 col-xs-12 col-md-offset-3 " style="margin:0 auto;">
                             <br />
-                          <button type="button" class="btn btn-success btn-mas" id="nuevo_usuario" value="Añadir"><i class="fa fa-save"></i> Guardar Usuario</button>
+                          <button type="button" class="btn btn-success btn-mas-form-user" id="nuevo_usuario" value="Añadir"><i class="fa fa-save"></i> Guardar Usuario</button>
                         </div>
                       </div>
             </form>

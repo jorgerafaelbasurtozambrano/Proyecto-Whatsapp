@@ -27,6 +27,8 @@
   <link href="{{'/css/cropper/dist/cropper.min.css'}}" rel="stylesheet">
   <!-- Custom Theme Style -->
   <link href="{{'/css/build/css/custom.min.css'}}" rel="stylesheet">
+  <!-- Custom Theme Style CUSTOM JG-->
+  <link href="{{'/css/build/css/style-custom.css'}}" rel="stylesheet">
   <!-- iCheck -->
   <link href="{{'/css/iCheck/skins/flat/green.css'}}" rel="stylesheet">
   <!-- bootstrap-wysiwyg -->
