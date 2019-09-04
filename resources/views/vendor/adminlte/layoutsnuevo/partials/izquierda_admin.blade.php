@@ -1,14 +1,10 @@
-<div class="col-md-3 left_col">
+<div class="col-md-3 left_col col-custom">
   <div class="left_col scroll-view">
 
-    <div class="clearfix"></div>
-
     <!-- menu profile quick info -->
-    <div class="profile clearfix ">
-      <div class="profile_pic" style="width:50%;float:none;margin:0 auto;">
+      <div class="profile_pic">
         <img src="img/Logo.jpg" alt="..." class="img-circle profile_img">
       </div>
-    </div>
     <!-- /menu profile quick info -->
     <br />
 
@@ -35,3 +31,5 @@
     <!-- /sidebar menu -->
   </div>
 </div>
+
+

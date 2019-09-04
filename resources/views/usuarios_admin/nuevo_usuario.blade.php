@@ -1,15 +1,9 @@
 <style>
-.border-r{
-  border-radius:5px;
-  background-color:#F7F7F7;
-}
+
 body .container.body .right_col{
   background-color:#ffffff;
 }
 
-input{
-  border-radius:2px!important;
-}
 
 .x_panel{
   border-radius:5px;
