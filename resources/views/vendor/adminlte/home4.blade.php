@@ -13,6 +13,6 @@
 @if (isset($verificacion_listar))
     @include('usuarios_admin.lista')
     @include('usuarios_admin.modal')
+    @include('envioMensajes.modaEnvio')
 @endif
-
 @endsection

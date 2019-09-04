@@ -54,7 +54,7 @@
                             <th class="column-title">Nombres </th>
                             <th class="column-title">Numero </th>
                             <th class="column-title">Chat ID </th>
-                            <th class="column-title " colspan="2">Opciones </th>
+                            <th class="column-title ">Opciones </th>
                             </th>
                           </tr>
                         </thead>
@@ -72,6 +72,7 @@
                             <td>
                                   <button  class="eliminar_usuario btn btn-danger btn-red" value="{{$data['id']}}"><i class="fa fa-trash"></i></button>
                                   <button class="actualizar_usuario btn btn-success btn-mas" value="{{$data['id']}}"><i class="fa fa-refresh"></i></button>
+                                  <button class="enviar btn btn-success btn-mas" value="{{$data['id']}}"><i class="fa fa-envelope"></i></button>
                             </td>
                             </td>
                           </tr>

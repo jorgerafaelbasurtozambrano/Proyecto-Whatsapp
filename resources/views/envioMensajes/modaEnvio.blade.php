@@ -1,4 +1,4 @@
-<div class="modal fade" id="actualizar_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modal_envio" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
@@ -7,11 +7,9 @@
       </div>
       <div class="modal-body">
         <br>
-        @include('usuarios_admin.nuevo_usuario')
       <div class="modal-footer">
       </div>
     </div>
   </div>
 </div>
-        }
-      });
+</div>
