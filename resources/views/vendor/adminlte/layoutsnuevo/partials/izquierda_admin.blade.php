@@ -1,11 +1,7 @@
 <div class="col-md-3 left_col col-custom">
   <div class="left_col scroll-view">
 
-    <!-- menu profile quick info -->
-      <div class="profile_pic">
-        <img src="img/Logo.jpg" alt="..." class="img-circle profile_img">
-      </div>
-    <!-- /menu profile quick info -->
+
     <br />
 
     <!-- sidebar menu -->

@@ -6,12 +6,16 @@
         <a id="menu_toggle"><i class="fa fa-bars"></i></a>
       </div>
 
-      <div class="nav toggle" >
-        <span><i class="fa fa-cubes"></i></span>
-      </div>
 
+                    <!-- menu profile quick info -->
+                    <div class="profile_pic">
+                <img src="img/Logo.jpg" alt="..." class="img-circle profile_img">
+              </div>
+    <!-- /menu profile quick info -->
+
+    <div class="title">GAIA- Administrador de Formularios</div>
     </nav>
-    <div class="title">Admin Formularios</div>
+
   </div>
 </div>
 <!-- /top navigation -->
