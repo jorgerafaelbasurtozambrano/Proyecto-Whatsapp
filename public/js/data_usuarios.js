@@ -8,6 +8,9 @@ $(document).ready(function (){
       llenarSelect();
       $('#modal_envio').modal('show');
   })
+  $('body').on('click','.flat',function(){
+      alert('hola');
+  })
 
   $('#star_mensajes').on('click',function() {
     var cantidad=$("#lista_usuarios").children().length;
@@ -124,6 +127,7 @@ $(document).ready(function (){
     })
 
     $('body').on('click', '.actualizar_usuario', function(){
+        $('#titulo').hide();
         id_usuario = $(this).val();
         obtener_datos();
         $('#nuevo_usuario').val('actualizar');

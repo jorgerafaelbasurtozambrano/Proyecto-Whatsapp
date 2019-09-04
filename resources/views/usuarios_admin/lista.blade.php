@@ -42,8 +42,8 @@
                         </thead>
                         <tbody>
                           @foreach($usuarios_obtenidos as $data)
-                            <tr class="even pointer">
-                              <td class="a-center ">
+                            <tr class="even pointer" >
+                              <td class="a-center">
                                 <input type="checkbox" class="flat" name="table_records" value="{{$data['id']}}">
                               </td>
                                <?php
