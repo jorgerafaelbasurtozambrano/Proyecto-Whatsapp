@@ -1,4 +1,51 @@
 $(document).ready(function (){
+  var contenidofila;
+  var coincidencia;
+  var exp;
+  $("#filtrar").keyup(function() {
+    if($("#select_busqueda").val()=="nombre")
+    {
+      $("#tabla_usuarios tbody tr").each(function() {
+        $(this).show();
+        contenidofila=$(this).find('td:eq(0)').html();
+        exp=new RegExp($("#filtrar").val(),'gi');
+        coincidencia=contenidofila.match(exp);
+        if (coincidencia!=null)
+        {
+        }else
+        {
+          $(this).hide();
+        }
+        if ($("#filtrar").val()=="")
+        {
+          $(this).show();
+        }
+      })
+    }else if($("#select_busqueda").val()=="numero"){
+      $("#tabla_usuarios tbody tr").each(function() {
+        $(this).show();
+        contenidofila=$(this).find('td:eq(1)').html();
+        exp=new RegExp($("#filtrar").val(),'gi');
+        coincidencia=contenidofila.match(exp);
+        if (coincidencia!=null)
+        {
+        }else
+        {
+          $(this).hide();
+        }
+        if ($("#filtrar").val()=="")
+        {
+          $(this).show();
+        }
+      })
+    }else if ($("#select_busqueda").val()==null) {
+      toastr.error('NO A SELECCIONADO TIPO DE BUSQUEDA','ADMIN WHATSAPP',{
+        "positionClass": "toast-bottom-right",
+        "closeButton": true,
+        "extendedTimeOut": 1
+      })
+    }
+  })
     $('body').on('click', '.eliminar_usuario', function(){
         $(this).closest('tr').remove();
         $.ajaxSetup({
@@ -32,7 +79,7 @@ $(document).ready(function (){
         id_usuario = $(this).val();
         obtener_datos();
         $('#nuevo_usuario').val('actualizar');
-        $('#actualizar_modal').modal('show'); 
+        $('#actualizar_modal').modal('show');
     })
 var id_usuario = 0;
 function obtener_datos(){
@@ -93,19 +140,18 @@ $('#nuevo_usuario').on('click', function(){
             data: formData,
             dataType:'json',
             success: function(data) {
-                
+
             },
             error:function(data) {
               console.log(data);
             }
-            
+
           })
           $("#tabla_usuarios"+" #"+id_usuario+"nombre").text($("#nombre_usuarionuevo").val());
           $("#tabla_usuarios"+" #"+id_usuario+"numero").text($("#numero_usuarionuevo").val());
-          $('#actualizar_modal').modal('hide'); 
+          $('#actualizar_modal').modal('hide');
     }
-    
-})
 
 })
 
+})

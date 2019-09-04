@@ -25,6 +25,26 @@
                     <div class="clearfix"></div>
                   </div>
 
+                  <div class="clearfix"></div>
+                  <h4> Modo De Busqueda:</h4>
+                  <div class="col-md-3 col-sm-3 col-xs-3 form-group has-feedback">
+                    <select id="select_busqueda" class="form-control" >
+                      <option value="default" selected disabled class="opcion-disable">Seleccione una opción</option>
+                      <option value="nombre">Nombres</option>
+                      <option value="numero">Numero</option>
+                    </select>
+                    <span class="" aria-hidden="true"></span>
+                  </div>
+
+
+                  <div class="col-md-5 col-sm2 col-xs-1 form-group top_search">
+                  			<div class="input-group">
+                  				<input  id="filtrar" type="text" class="form-control" placeholder="Buscar Persona ejem. jorge...">
+                  				<span class="input-group-btn">
+                  					<button class="btn btn-default" type="text">IR!</button>
+                  				</span>
+                  			</div>
+                  		</div>
                   <div class="x_content">
 
                     <div class="table-responsive">
@@ -38,20 +58,20 @@
                             </th>
                           </tr>
                         </thead>
-                
+
                         <tbody>
                        @foreach($usuarios_obtenidos as $data)
                           <tr class="even pointer">
-                           <?php 
+                           <?php
                            $seleccion_nombre = $data['id'].'nombre';
                            $seleccion_numero = $data['id'].'numero';
-                                     ?>                 
+                                     ?>
                            <td class=" " id=<?php echo $seleccion_nombre?> >{{$data['nombre']}}</td>
                             <td class=" " id=<?php echo $seleccion_numero?> >{{$data['numero_telefono']}}</td>
                             <td class=" " >{{$data['chatid']}}</td>
                             <td>
-                                  <button  class="eliminar_usuario btn btn-danger btn-red" value="{{$data['id']}}"><i class="fa fa-trash"></i> Eliminar</button>
-                                  <button class="actualizar_usuario btn btn-success btn-mas" value="{{$data['id']}}"><i class="fa fa-refresh"></i> Actualizar</button>
+                                  <button  class="eliminar_usuario btn btn-danger btn-red" value="{{$data['id']}}"><i class="fa fa-trash"></i></button>
+                                  <button class="actualizar_usuario btn btn-success btn-mas" value="{{$data['id']}}"><i class="fa fa-refresh"></i></button>
                             </td>
                             </td>
                           </tr>
@@ -59,9 +79,9 @@
                         </tbody>
                       </table>
                     </div>
-							
-              
-						
+
+
+
                   </div>
                 </div>
               </div>
