@@ -1,5 +1,5 @@
 <div class="x_title x_title_fix">
-    <h2><i class="fa fa-address-book"></i> Lista de Usuarios </h2>
+    <h2>Lista de Usuarios </h2>
     <div class="clearfix"></div>
 </div>
 <div class="col-md-12 col-sm-12 col-xs-12">
@@ -66,7 +66,7 @@
                     </div>
 
                     <div class="col-md-3 col-sm-3 col-xs-3 form-group has-feedback">
-                      <button class="enviar btn btn-success"><i class="fa fa-envelope"></i> Enviar Encuesta</button>
+                      <button class="enviar btn btn-success btn-lista"><i class="fa fa-envelope"></i> Enviar Encuesta</button>
                       <span class="" aria-hidden="true"></span>
                     </div>
 

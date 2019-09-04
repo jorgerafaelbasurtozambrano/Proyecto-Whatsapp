@@ -272,9 +272,18 @@ td{
     border-right:2px solid #E6E9ED;
     background: #ffffff!important;
     vertical-align: middle!important;
+    font-family:-apple-system, BlinkMacSystemFont, San Francisco, Roboto, Segoe UI, Helvetica Neue, sans-serif;
+    font-weight:500;
 }
 
-td:hover{
-    background-color:#F4F6F8;
+tr:hover td{
+    background-color: #f9f9f9!important;
+    
 }
+
+.btn-lista{
+    background: linear-gradient(to bottom, #6371c7, #5563c1)!important;
+    padding: 10px;
+}
+
 /***********************/

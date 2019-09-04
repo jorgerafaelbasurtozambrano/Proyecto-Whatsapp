@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-md-12 col-sm-12 col-xs-12">
   <div class="x_title">
-            <h2><i class="fa fa-whatsapp"></i> Nuevo Usuario</h2>
+            <h2>Nuevo Usuario</h2>
             <div class="clearfix"></div>
   </div>
     <div class="x_panel">
@@ -16,7 +16,7 @@
               <div class="col-md-12 col-sm-12 col-xs-12 form-group has-feedback ">
               <label for="nombre">Numero de usuario:</label>  
                     <input type="number" class="form-control has-feedback-left btn-form-nuevouser" id="numero_usuarionuevo" placeholder="Numero de Telefono">
-                    <span class="fa fa-phone form-control-feedback left" aria-hidden="true"></span>
+                    <span class="fa fa-whatsapp form-control-feedback left" aria-hidden="true"></span>
                </div>
 
 
