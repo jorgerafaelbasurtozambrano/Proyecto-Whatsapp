@@ -29,7 +29,9 @@
                       <table id="tabla_usuarios" class="table table-striped jambo_table bulk_action">
                         <thead>
                           <tr class="headings">
-                            <th class="column-title"></th>
+                            <th>
+                              <input type="checkbox" id="check-all" class="flat">
+                            </th>
                             <th class="column-title">Nombres </th>
                             <th class="column-title">Numero </th>
                             <th class="column-title">Chat ID </th>
@@ -41,13 +43,13 @@
                         <tbody>
                        @foreach($usuarios_obtenidos as $data)
                           <tr class="even pointer">
-                          <td class="a-center ">
-                            <input value="{{$data['id']}}"  type="checkbox" class="flat">
-                          </td>
-                           <?php
-                           $seleccion_nombre = $data['id'].'nombre';
-                           $seleccion_numero = $data['id'].'numero';
-                                     ?>
+                            <td class="a-center ">
+                              <input name="table_records" value="{{$data['id']}}"  type="checkbox" class="flat">
+                            </td>
+                            <?php
+                              $seleccion_nombre = $data['id'].'nombre';
+                              $seleccion_numero = $data['id'].'numero';
+                            ?>
                            <td class=" " id=<?php echo $seleccion_nombre?> >{{$data['nombre']}}</td>
                             <td class=" " id=<?php echo $seleccion_numero?> >{{$data['numero_telefono']}}</td>
                             <td class=" " >{{$data['chatid']}}</td>
