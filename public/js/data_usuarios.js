@@ -136,7 +136,7 @@ $('#nuevo_usuario').on('click', function(){
             }
           });
           var formData={
-            nombre:$('#nombre_usuarionuevo').val(),
+            nombre:$('#nombre_usuarionuevo').val().toUpperCase(),
             telefono:$('#numero_usuarionuevo').val(),
           };
           $.ajax({
@@ -162,7 +162,7 @@ $('#nuevo_usuario').on('click', function(){
           });
     }else if($('#nuevo_usuario').val()=='actualizar'){
         var formData={
-            nombre:$('#nombre_usuarionuevo').val(),
+            nombre:$('#nombre_usuarionuevo').val().toUpperCase(),
             telefono:$('#numero_usuarionuevo').val(),
             id:id_usuario,
           };
