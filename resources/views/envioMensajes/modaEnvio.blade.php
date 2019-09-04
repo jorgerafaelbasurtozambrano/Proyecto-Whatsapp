@@ -40,7 +40,7 @@
                               </select>
                               <span class="" aria-hidden="true"></span>
                       </div>
-                      <button id="star_mensajes" data-toggle="tooltip" title="Enviar Mensajes!" class="actualizar_usuario btn btn-success btn-mas"><i class="fa fa-send-o"></i></button>
+                      <button id="star_mensajes" data-toggle="tooltip" title="Enviar Mensajes!" class="btn btn-success btn-mas"><i class="fa fa-send-o"></i></button>
 
                 </div>
             </div>

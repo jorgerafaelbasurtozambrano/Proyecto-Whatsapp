@@ -7,6 +7,17 @@ $(document).ready(function (){
       llenarSelect();
       $('#modal_envio').modal('show');
   })
+  $('#star_mensajes').on('click',function() {
+    var cantidad=$("#lista_usuarios").children().length;
+    // for (let i=0;i<=cantidad;i++) {
+    //   var dato=$("#lista_usuarios").children()[i];
+    //   console.log(dato.value;
+    // }
+    $("#lista_usuarios").each(function( index ) {
+      console.log($(this).text();
+    });
+  })
+
   function recorrerTabla() {
       var seleccionados=0;
       $('#lista_usuarios').html("");
