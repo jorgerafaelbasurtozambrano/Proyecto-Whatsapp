@@ -1,36 +1,10 @@
-<style>
-
-body .container.body .right_col{
-  background-color:#ffffff;
-}
-
-
-.x_panel{
-  border-radius:5px;
-  background-color:#F7F7F7;
-}
-
-.nav.child_menu>li>a{
-  font-size:14px;
-}
-
-a{
-  font-size:16px;
-}
-
-.c-refresh>li>a:hover{
-  background-color:transparent;
-}
-
-</style>
-
 <div class="row">
   <div class="col-md-12 col-sm-12 col-xs-12">
-    <div class="x_panel">
-        <div class="x_title">
-            <h2><i class="fa fa-user"></i> Nuevo Usuario</h2>
+  <div class="x_title">
+            <h2>Nuevo Usuario</h2>
             <div class="clearfix"></div>
-        </div>
+  </div>
+    <div class="x_panel">
         <div class="x_content">
             <br />
             <form data-parsley-validate class="form-horizontal form-label-left">
@@ -46,9 +20,9 @@ a{
 
 
                       <div class="form-group text-center">
-                        <div class="col-md-12 col-sm-12 col-xs-12 col-md-offset-3 " style="margin:0 auto;">
+                        <div class="col-md-12 col-sm-12 col-xs-12 col-md-offset-3 boton-guardar">
                             <br />
-                          <button type="button" class="btn btn-success btn-mas-form-user" id="nuevo_usuario" value="Añadir"><i class="fa fa-save"></i> Guardar Usuario</button>
+                          <button type="button" class="btn btn-success btn-mas-form-user" id="nuevo_usuario" value="Añadir">Guardar Usuario</button>
                         </div>
                       </div>
             </form>
