@@ -24,42 +24,43 @@
                     <h4 class="h-fix"> Usuarios Seleccionados</h4>
 
                   <div class="x_content">
-
-                    <div class="table-responsive">
-                      <table id="tabla_usuarios" class="table table-striped jambo_table bulk_action">
+                      <div class="table-responsive">
+                      <table  id="tabla_usuarios" class="table table-striped jambo_table bulk_action">
                         <thead>
                           <tr class="headings">
                             <th>
-                              <input type="checkbox" id="check-all" class="flat">
+                              <input type="checkbox" id="check-all" class="flat estatico">
                             </th>
                             <th class="column-title">Nombres </th>
                             <th class="column-title">Numero </th>
                             <th class="column-title">Chat ID </th>
                             <th class="column-title ">Opciones </th>
+                            <th class="bulk-actions" colspan="4">
+                              <a class="antoo" style="color:#fff; font-weight:500;">Usuarios Seleccionados ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
                             </th>
                           </tr>
                         </thead>
-
                         <tbody>
-                       @foreach($usuarios_obtenidos as $data)
-                          <tr class="even pointer">
-                            <td class="a-center ">
-                              <input name="table_records" value="{{$data['id']}}"  type="checkbox" class="flat">
-                            </td>
-                            <?php
-                              $seleccion_nombre = $data['id'].'nombre';
-                              $seleccion_numero = $data['id'].'numero';
-                            ?>
-                           <td class=" " id=<?php echo $seleccion_nombre?> >{{$data['nombre']}}</td>
-                            <td class=" " id=<?php echo $seleccion_numero?> >{{$data['numero_telefono']}}</td>
-                            <td class=" " >{{$data['chatid']}}</td>
-                            <td>
-                                  <button  class="eliminar_usuario btn btn-danger btn-red" value="{{$data['id']}}"><i class="fa fa-trash"></i></button>
-                                  <button class="actualizar_usuario btn btn-success btn-mas" value="{{$data['id']}}"><i class="fa fa-refresh"></i></button>
-                            </td>
-                            </td>
-                          </tr>
-                          @endforeach
+                          @foreach($usuarios_obtenidos as $data)
+                            <tr class="even pointer">
+                              <td class="a-center ">
+                                <input type="checkbox" class="flat" name="table_records" value="{{$data['id']}}">
+                              </td>
+                               <?php
+                                 $seleccion_nombre = $data['id'].'nombre';
+                                 $seleccion_numero = $data['id'].'numero';
+                               ?>
+
+                               <td class=" " id=<?php echo $seleccion_nombre?> >{{$data['nombre']}}</td>
+                               <td class=" " id=<?php echo $seleccion_numero?> >{{$data['numero_telefono']}}</td>
+                               <td class=" " >{{$data['chatid']}}</td>
+                               <td>
+                                     <button  class="eliminar_usuario btn btn-danger btn-red" value="{{$data['id']}}"><i class="fa fa-trash"></i></button>
+                                     <button class="actualizar_usuario btn btn-success btn-mas" value="{{$data['id']}}"><i class="fa fa-refresh"></i></button>
+                               </td>
+                               </td>
+                             </tr>
+                        @endforeach
                         </tbody>
                       </table>
                     </div>

@@ -2,18 +2,19 @@ $(document).ready(function (){
   var contenidofila;
   var coincidencia;
   var exp;
+
   $('body').on('click','.enviar',function(){
       recorrerTabla();
       llenarSelect();
       $('#modal_envio').modal('show');
   })
+
+  $('body').on('click','.estatico',function() {
+    console.log("hola");
+  })
+
   $('#star_mensajes').on('click',function() {
     var cantidad=$("#lista_usuarios").children().length;
-    // for (let i=0;i<=cantidad;i++) {
-    //   var dato=$("#lista_usuarios").children()[i];
-    //   console.log(dato.value;
-    // }
-    
   })
 
   function recorrerTabla() {
