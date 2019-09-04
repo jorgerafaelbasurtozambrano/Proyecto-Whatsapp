@@ -1,3 +1,9 @@
+<style>
+  input
+  {
+    text-transform: uppercase;
+  }
+</style>
 <div class="row">
   <div class="col-md-12 col-sm-12 col-xs-12">
   <div class="x_title">
@@ -13,7 +19,6 @@
               <input type="text" class="form-control has-feedback-left btn-form-nuevouser" id="nombre_usuarionuevo" placeholder="Nombres" style="margin-bottom: 20px;" name="nombre">
                     <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
               </div>
-
               <div class="col-md-12 col-sm-12 col-xs-12 form-group has-feedback ">
               <label for="nombre">Numero de usuario:</label>  
                     <input type="number" class="form-control has-feedback-left btn-form-nuevouser" id="numero_usuarionuevo" placeholder="Numero de Telefono">

@@ -1,3 +1,9 @@
+<style>
+  input
+  {
+    text-transform: uppercase;
+  }
+</style>
 <div class="modal fade mensaje" id="modal_envio" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
@@ -13,7 +19,7 @@
           <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="x_panel">
                 <div class="x_title">
-                    <h2><i class="fa fa-user"></i>LISTA DE USUARIO</h2><h5 id="numeroCliente"></h5> 
+                    <h2><i class="fa fa-user"></i>LISTA DE USUARIO</h2><h5 id="numeroCliente"></h5>
                     <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
@@ -34,6 +40,7 @@
                               </select>
                               <span class="" aria-hidden="true"></span>
                       </div>
+                      <button id="star_mensajes" data-toggle="tooltip" title="Enviar Mensajes!" class="actualizar_usuario btn btn-success btn-mas"><i class="fa fa-send-o"></i></button>
 
                 </div>
             </div>

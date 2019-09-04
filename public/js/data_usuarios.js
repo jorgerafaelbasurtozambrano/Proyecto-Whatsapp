@@ -20,6 +20,13 @@ $(document).ready(function (){
         }
       })
       $("#numeroCliente").html("    "+seleccionados+" SELECCIONADOS");
+      if(seleccionados==0)
+      {
+        $("#star_mensajes").hide();
+      }else
+      {
+        $("#star_mensajes").show();
+      }
   }
 
   function llenarSelect() {
