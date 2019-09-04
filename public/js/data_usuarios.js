@@ -2,12 +2,42 @@ $(document).ready(function (){
   var contenidofila;
   var coincidencia;
   var exp;
+  $('body').on('click','.enviar',function(){
+      recorrerTabla();
+      llenarSelect();
+      $('#modal_envio').modal('show');
+  })
+  function recorrerTabla() {
+      var seleccionados=0;
+      $('#lista_usuarios').html("");
+      $("#tabla_usuarios tbody tr").each(function() {
+        var div=$(this).find('td:eq(0)').children()[0];
+        var input=div.getElementsByTagName('input')[0];
+        if(input.checked==true)
+        {
+          seleccionados=seleccionados+1;
+          $('#lista_usuarios').append("<option value="+input.value+">"+$(this).find('td:eq(1)').text()+"</option>");
+        }
+      })
+      $("#numeroCliente").html("    "+seleccionados+" SELECCIONADOS");
+  }
+
+  function llenarSelect() {
+    $("#encuesta_enviar").empty();
+    $("#encuesta_enviar").append("<option selected disabled>Seleccione una opción</option>");
+    $.get('/obtenerFormularios',function(data) {
+        $.each(data,function(i,item) {
+            $("#encuesta_enviar").append("<option value="+item.id+">"+item.descripcion+"</option>");
+        })
+    })
+  }
+
   $("#filtrar").keyup(function() {
     if($("#select_busqueda").val()=="nombre")
     {
       $("#tabla_usuarios tbody tr").each(function() {
         $(this).show();
-        contenidofila=$(this).find('td:eq(0)').html();
+        contenidofila=$(this).find('td:eq(1)').html();
         exp=new RegExp($("#filtrar").val(),'gi');
         coincidencia=contenidofila.match(exp);
         if (coincidencia!=null)
@@ -24,7 +54,7 @@ $(document).ready(function (){
     }else if($("#select_busqueda").val()=="numero"){
       $("#tabla_usuarios tbody tr").each(function() {
         $(this).show();
-        contenidofila=$(this).find('td:eq(1)').html();
+        contenidofila=$(this).find('td:eq(2)').html();
         exp=new RegExp($("#filtrar").val(),'gi');
         coincidencia=contenidofila.match(exp);
         if (coincidencia!=null)

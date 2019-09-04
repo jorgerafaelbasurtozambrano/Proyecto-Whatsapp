@@ -161,7 +161,6 @@ $(document).ready(function (){
         $("#select_formulario").append("<option selected disabled>Seleccione una opción</option>");
         $.get('/obtenerFormularios',function(data) {
             $.each(data,function(i,item) {
-                console.log(item);
                 $("#select_formulario").append("<option value="+item.id+">"+item.descripcion+"</option>");
             })
         })
@@ -170,7 +169,6 @@ $(document).ready(function (){
     {
         $.get('/obtenerPreguntas/'+$id,function(data) {
             $.each(data,function(i,item) {
-                console.log(item.get_respuestas.length)
                 var tr="";
                 tr+="<tr>";
                 tr+="<td  rowspan="+(item.get_respuestas.length+1)+">"+item.descripcion+"</td>";
@@ -184,7 +182,7 @@ $(document).ready(function (){
                     tr1+="</tr>";
                     $("#tabla_preguntas").append(tr1);
                 })
-                
+
             })
         })
     }
@@ -221,7 +219,7 @@ $(document).ready(function (){
                     refrescar($("#select_formulario").val());
                     $("#puntuacion_preguntas_ac").val("");
                     $("#descripcion_pregunta_ac").val("");
-                    
+
                 },
                 error:function(data) {
                   toastr.error('ERROR AL REALIZAR LA PETICION','Whatsapp ADMIN',{

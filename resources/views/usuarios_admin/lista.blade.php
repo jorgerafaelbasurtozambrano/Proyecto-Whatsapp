@@ -44,13 +44,24 @@
                   					<button class="btn btn-default" type="text">IR!</button>
                   				</span>
                   			</div>
-                  		</div>
+                  </div>
+
+
+                  <div class="clearfix"></div>
+                    <h4> Formulario a enviar:</h4>
+                    <div class="col-md-3 col-sm-3 col-xs-3 form-group has-feedback">
+                      <button class="enviar btn btn-success"><i class="fa fa-envelope"></i> Enviar Encuesta</button>
+                      <span class="" aria-hidden="true"></span>
+                    </div>
+
+
                   <div class="x_content">
 
                     <div class="table-responsive">
                       <table id="tabla_usuarios" class="table table-striped jambo_table bulk_action">
                         <thead>
                           <tr class="headings">
+                            <th class="column-title"></th>
                             <th class="column-title">Nombres </th>
                             <th class="column-title">Numero </th>
                             <th class="column-title">Chat ID </th>
@@ -62,6 +73,9 @@
                         <tbody>
                        @foreach($usuarios_obtenidos as $data)
                           <tr class="even pointer">
+                          <td class="a-center ">
+                            <input value="{{$data['id']}}"  type="checkbox" class="flat">
+                          </td>
                            <?php
                            $seleccion_nombre = $data['id'].'nombre';
                            $seleccion_numero = $data['id'].'numero';
@@ -72,7 +86,6 @@
                             <td>
                                   <button  class="eliminar_usuario btn btn-danger btn-red" value="{{$data['id']}}"><i class="fa fa-trash"></i></button>
                                   <button class="actualizar_usuario btn btn-success btn-mas" value="{{$data['id']}}"><i class="fa fa-refresh"></i></button>
-                                  <button class="enviar btn btn-success btn-mas" value="{{$data['id']}}"><i class="fa fa-envelope"></i></button>
                             </td>
                             </td>
                           </tr>
