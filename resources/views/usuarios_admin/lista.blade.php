@@ -21,7 +21,7 @@
                   </div>
                   <div class="clearfix"></div>
                   <hr style="border-width:2px;">
-                    <h4 class="h-fix"> Usuarios Seleccionados</h4>
+                    <h4 class="h-fix"> Usuarios Disponibles</h4>
 
                   <div class="x_content">
 

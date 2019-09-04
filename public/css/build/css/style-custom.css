@@ -3,6 +3,8 @@ body{
     background-color:#F4F6F8;
     font-size:1.4em!important;
     font-family:-apple-system, BlinkMacSystemFont, San Francisco, Roboto, Segoe UI, Helvetica Neue, sans-serif;
+    height:100vh;
+    min-height: 100vh;
 }
 
 h1,h2,h3,h4,h5,h6{
@@ -74,7 +76,7 @@ body .container.body .right_col{
 
 .left_col{
     background-color:#31373D;
-    width: 216px!important;;
+    width: 216px!important;
   }
 
 div.left_col.scroll-view{
@@ -251,24 +253,28 @@ button{
 
 
 /*******TABLAS**********/
+table.jambo_table thead{
+    background: #ffffff;
+    color: #212b36;
+}
+
 th{
-    border-right:4px solid #ffffff;
+    border-right:2px solid #E6E9ED;
+    text-align: center;
+}
+
+th:last-child{
+    border-right:none;
+}
+
+td{
     text-align:center;
-    text-transform: uppercase;
-  }
+    border-right:2px solid #E6E9ED;
+    background: #ffffff!important;
+    vertical-align: middle!important;
+}
 
-  td{text-align:center;vertical-align:middle!important;border-right:4px solid #ffffff;border-bottom:4px solid #ffffff!important;background-color:#f9f9f9!important;}
-
-  .td-fix{border:none!important;}
-  .td-fix:last-child{border-bottom:4px solid #ffffff!important;}
-
-  td:last-child{
-    border:none;
-    border-left:4px solid #ffffff;
-  }
-
-  th:last-child{
-    border:none!important;
-  }
-
+td:hover{
+    background-color:#F4F6F8;
+}
 /***********************/
