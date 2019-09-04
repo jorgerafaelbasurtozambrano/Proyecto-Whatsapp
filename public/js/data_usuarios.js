@@ -13,9 +13,7 @@ $(document).ready(function (){
     //   var dato=$("#lista_usuarios").children()[i];
     //   console.log(dato.value;
     // }
-    $("#lista_usuarios").each(function( index ) {
-      console.log($(this).text();
-    });
+    
   })
 
   function recorrerTabla() {
