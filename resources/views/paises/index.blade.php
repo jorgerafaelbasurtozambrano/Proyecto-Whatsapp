@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-md-12 col-sm-12 col-xs-12">
-  <div class="x_title">
+  <div id="title_pais" class="x_title">
             <h2 id="titulo">Nuevo Pais</h2>
             <div class="clearfix"></div>
   </div>
@@ -40,7 +40,7 @@
                       <div class="form-group text-center">
                         <div class="col-md-12 col-sm-12 col-xs-12 col-md-offset-3 boton-guardar">
                             <br />
-                          <button type="button" class="btn btn-success btn-mas-form-user" id="nuevo_pais" value="Añadir">Guardar Pais</button>
+                          <button type="button" class="btn btn-success btn-mas-form-user" id="nuevo_pais" value="AnadirPais">Guardar Pais</button>
                         </div>
                       </div>
             </form>

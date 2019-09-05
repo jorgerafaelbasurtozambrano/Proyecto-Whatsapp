@@ -75,6 +75,7 @@
 <script src="{{asset('js/envio.js')}}"></script>
 <script src="{{asset('js/data_usuarios.js')}}"></script>
 <script src="{{asset('js/gestionFormulario.js')}}"></script>
+<script src="{{asset('js/paises.js')}}"></script>
 <script>
     //document.oncontextmenu = function(){return false;}
     window.Laravel = {!! json_encode([
