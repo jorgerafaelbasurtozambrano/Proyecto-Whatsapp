@@ -18,4 +18,7 @@
 @if(isset($indexPais))
     @include('paises.index')
 @endif
+@if(isset($listaPais))
+    @include('paises.lista')
+@endif
 @endsection

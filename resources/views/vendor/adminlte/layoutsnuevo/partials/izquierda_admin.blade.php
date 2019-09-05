@@ -13,7 +13,7 @@
           <li><a><i class="fa fa-wpforms"></i>Paises <span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
               <li><a href="/pais">Crear Pais</a></li>
-              <li><a href="#">Lista de Pais</a></li>
+              <li><a href="/listaPaises">Lista de Pais</a></li>
             </ul>
           </li>
 

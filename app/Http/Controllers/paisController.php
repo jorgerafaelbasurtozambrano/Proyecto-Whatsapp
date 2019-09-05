@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use App\paisModel;
 class paisController extends Controller
 {
     /**
@@ -17,7 +17,12 @@ class paisController extends Controller
       $indexPais=true;
       return view('adminlte::home4', compact('indexPais'));
     }
-
+    public function lista()
+    {
+      $listaPais=true;
+      $paises_datos=paisModel::all();
+      return view('adminlte::home4', compact('listaPais','paises_datos'));
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -36,7 +41,12 @@ class paisController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $dato= new paisModel;
+        $dato->nombre=$request->nombre_pais;
+        $dato->abreviatura=$request->abreviatura;
+        $dato->codigo=$request->codigo_pais;
+        $dato->imagen=$request->imagen;
+        $dato->save();
     }
 
     /**
