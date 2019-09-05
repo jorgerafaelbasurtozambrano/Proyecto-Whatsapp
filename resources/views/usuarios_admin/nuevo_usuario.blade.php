@@ -22,7 +22,7 @@
                        <label for="nombre">Pais:</label>
                        <select id="select_pregruntas" class="form-control has-feedback-left btn-form-nuevouser" >
                           <option value="" selected disabled class="opcion-disable">Seleccione una pregunta</option>
-                          
+
                        </select>
                        <span class="" aria-hidden="true"></span>
                </div>
