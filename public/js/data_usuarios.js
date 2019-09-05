@@ -127,7 +127,7 @@ $(document).ready(function (){
     })
 
     $('body').on('click', '.actualizar_usuario', function(){
-        $('#titulo').hide();
+        $('#title').hide();
         id_usuario = $(this).val();
         obtener_datos();
         $('#nuevo_usuario').val('actualizar');

@@ -55,7 +55,7 @@
                                <td class=" " >{{$data['chatid']}}</td>
                                <td>
                                      <button  class="eliminar_usuario btn btn-danger btn-red" value="{{$data['id']}}"><i class="fa fa-trash"></i> Eliminar</button>
-                                     <button class="actualizar_usuario btn btn-success btn-mas" value="{{$data['id']}}"><i class="fa fa-refresh"></i> Actualizar</button>
+                                     <button class="actualizar_usuario btn btn-success btn-mas" value="{{$data['id']}}"><i class="fa fa-pencil-square-o"></i>   Editar</button>
                                </td>
                                </td>
                              </tr>
@@ -64,8 +64,8 @@
                       </table>
                     </div>
 
-                    <div class="col-md-3 col-sm-3 col-xs-3 form-group has-feedback">
-                      <button class="enviar btn btn-success btn-lista"><i class="fa fa-send"></i> Enviar Encuesta</button>
+                    <div class="col-md-12 col-sm-12 col-xs-12 form-group has-feedback" style="text-align:center;">
+                      <button class="enviar btn btn-success btn-lista"><i class="fa fa-check-square-o" ></i> Seleccione una encuesta</button>
                       <span class="" aria-hidden="true"></span>
                     </div>
 

@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-md-12 col-sm-12 col-xs-12">
-  <div class="x_title">
+  <div class="x_title" id="title">
             <h2 id="titulo">Nuevo Usuario</h2>
             <div class="clearfix"></div>
   </div>

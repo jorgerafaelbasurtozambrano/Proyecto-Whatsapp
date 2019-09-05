@@ -11,13 +11,13 @@
           <li><a><i class="fa fa-user-o"></i> Usuarios <span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
               <li><a href="/home">Crear Ususario</a></li>
-              <li><a href="/listar">Listar Usuarios</a></li>
+              <li><a href="/listar">Lista de Usuarios</a></li>
             </ul>
           </li>
 
-          <li><a><i class="fa fa-wpforms"></i> Formularios <span class="fa fa-chevron-down"></span></a>
+          <li><a><i class="fa fa-wpforms"></i> Encuestas <span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
-              <li><a href="/nuevo-formulario">Crear formulario</a></li>
+              <li><a href="/nuevo-formulario">Crear Encuesta</a></li>
             </ul>
           </li>
 

@@ -13,7 +13,7 @@
               </div>
     <!-- /menu profile quick info -->
 
-    <div class="title">GAIA- Administrador de Formularios</div>
+    <div class="title">GAIA- Administrador de Envio de Formularios</div>
     </nav>
 
   </div>
