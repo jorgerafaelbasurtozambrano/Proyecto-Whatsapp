@@ -18,8 +18,6 @@
                     <input type="number" class="form-control has-feedback-left btn-form-nuevouser" id="numero_usuarionuevo" placeholder="Numero de Telefono">
                     <span class="fa fa-whatsapp form-control-feedback left" aria-hidden="true"></span>
                </div>
-
-
                       <div class="form-group text-center">
                         <div class="col-md-12 col-sm-12 col-xs-12 col-md-offset-3 boton-guardar">
                             <br />

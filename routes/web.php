@@ -27,6 +27,7 @@ Route::resource('/usuarios', 'usuarioController');
 Route::resource('/formularios', 'formulariosController');
 Route::resource('/preguntas', 'preguntasController');
 Route::resource('/respuestas', 'respuestasController');
+Route::resource('/paises', 'paisController');
 
 //RUTAS
 Route::get('/home', 'usuarioController@index');
@@ -37,3 +38,5 @@ Route::get('/nuevo-formulario', 'formulariosController@index');
 Route::get('/obtener/{id}','usuarioController@obtener_datos');
 Route::get('/obtenerPreguntas/{id}','formulariosController@getPreguntas');
 Route::get('/obtenerFormularios','formulariosController@getFormularios');
+
+Route::get('/pais', 'paisController@index');
