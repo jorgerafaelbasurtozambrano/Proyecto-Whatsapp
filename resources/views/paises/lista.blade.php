@@ -53,11 +53,6 @@
                       </table>
                     </div>
 
-                    <div class="col-md-12 col-sm-12 col-xs-12 form-group has-feedback" style="text-align:center;">
-                      <button class="enviar btn btn-success btn-lista"><i class="fa fa-check-square-o" ></i> Seleccione una encuesta</button>
-                      <span class="" aria-hidden="true"></span>
-                    </div>
-
                   </div>
                 </div>
               </div>
