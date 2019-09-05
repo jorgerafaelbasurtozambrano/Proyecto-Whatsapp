@@ -43,14 +43,16 @@
   <!-- bootstrap-daterangepicker -->
   <link href="{{'/css/bootstrap-daterangepicker/daterangepicker.css'}}" rel="stylesheet">
   <!-- Datatables -->
-    <link href="{{'/css/datatables.net-bs/css/dataTables.bootstrap.min.css'}}" rel="stylesheet">
-    <link href="{{'/css/datatables.net-buttons-bs/css/buttons.bootstrap.min.css'}}" rel="stylesheet">
-    <link href="{{'/css/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css'}}" rel="stylesheet">
-    <link href="{{'/css/datatables.net-responsive-bs/css/responsive.bootstrap.min.css'}}" rel="stylesheet">
-    <link href="{{'/css/datatables.net-scroller-bs/css/scroller.bootstrap.min.css'}}" rel="stylesheet">
-    <script src="https://use.fontawesome.com/119ed3079a.js"></script>
-    <style>
-    </style>
+  <link href="{{'/css/datatables.net-bs/css/dataTables.bootstrap.min.css'}}" rel="stylesheet">
+  <link href="{{'/css/datatables.net-buttons-bs/css/buttons.bootstrap.min.css'}}" rel="stylesheet">
+  <link href="{{'/css/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css'}}" rel="stylesheet">
+  <link href="{{'/css/datatables.net-responsive-bs/css/responsive.bootstrap.min.css'}}" rel="stylesheet">
+  <link href="{{'/css/datatables.net-scroller-bs/css/scroller.bootstrap.min.css'}}" rel="stylesheet">
+
+  <!-- Dropzone.js -->
+  <link href="{{'/css/dropzone/dist/min/dropzone.min.css'}}" rel="stylesheet">
+
+  <script src="https://use.fontawesome.com/119ed3079a.js"></script>
   <script>
       window.Laravel = {!! json_encode([
           'csrfToken' => csrf_token(),

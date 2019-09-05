@@ -15,4 +15,7 @@
     @include('envioMensajes.modaEnvio')
     @include('usuarios_admin.modal')
 @endif
+@if(isset($indexPais))
+    @include('paises.index')
+@endif
 @endsection

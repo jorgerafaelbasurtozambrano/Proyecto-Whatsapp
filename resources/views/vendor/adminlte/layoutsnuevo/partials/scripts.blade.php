@@ -1,10 +1,11 @@
-
 <!-- jQuery -->
 <script src="{{'/css/jquery/dist/jquery.min.js'}}"></script>
 <!-- Bootstrap -->
 <script src="{{'/css/bootstrap/dist/js/bootstrap.min.js'}}"></script>
 <!-- FastClick -->
 <script src="{{'/css/fastclick/lib/fastclick.js'}}"></script>
+<!-- Dropzone.js -->
+<script src="{{'/css/dropzone/dist/min/dropzone.min.js'}}"></script>
 <!-- NProgress -->
 <script src="{{'/css/nprogress/nprogress.js'}}"></script>
 <!-- bootstrap-progressbar -->
@@ -74,7 +75,6 @@
 <script src="{{asset('js/envio.js')}}"></script>
 <script src="{{asset('js/data_usuarios.js')}}"></script>
 <script src="{{asset('js/gestionFormulario.js')}}"></script>
-
 <script>
     //document.oncontextmenu = function(){return false;}
     window.Laravel = {!! json_encode([

@@ -14,7 +14,7 @@
         <div class="x_content">
             <br />
         <div class="x_panel border-r">
-            <form data-parsley-validate class="form-horizontal form-label-left"">
+            <form data-parsley-validate class="form-horizontal form-label-left">
             <h2>Titulo:</h2>
             <div class="col-md-11 col-sm-11 col-xs-11 form-group has-feedback">
                     <input type="text" class="form-control has-feedback-left" id="titulo_formulario" placeholder="Titulo del formulario">
@@ -111,7 +111,6 @@
             </div>
           </div>
         </div>
-            <!-------------------->
             </form>
         </div>
     </div>
