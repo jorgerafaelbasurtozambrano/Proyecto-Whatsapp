@@ -44,20 +44,14 @@
             </div>
           </div>
         </div>
-
-
           </div>
         </div>
-
-<<<<<<< HEAD
-=======
                       <div class="form-group text-center">
                         <div class="col-md-12 col-sm-12 col-xs-12 col-md-offset-3 boton-guardar">
                             <br />
                           <button type="button" class="btn btn-success btn-mas-form-user" id="nuevo_pais" value="AnadirPais">Guardar Pais</button>
                         </div>
                       </div>
->>>>>>> 25062ff8d9aaf45fc4e96e6907b9eec480262244
             </form>
         </div>
     </div>
