@@ -6,40 +6,58 @@ $(document).ready(function (){
   });
 
   $("#nuevo_pais").on('click',function() {
-    $.ajaxSetup({
-        headers:{
-          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-      });
-      var formData={
-           nombre_pais:$('#nombre_pais').val().toUpperCase(),
-           codigo_pais:$('#codigo_pais').val(),
-           abreviatura:$('#abrev_pais').val().toUpperCase(),
-           imagen:$("#dataImagen").val().toString(),
-         };
+    if($("#dataImagen").val().toString()!="")
+    {
+      if ( $("#nombre_pais").val()!="" && $("#codigo_pais").val()!="" && $("#abrev_pais").val()!="") {
+        $.ajaxSetup({
+            headers:{
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+          });
+          var formData={
+               nombre_pais:$('#nombre_pais').val().toUpperCase(),
+               codigo_pais:$('#codigo_pais').val(),
+               abreviatura:$('#abrev_pais').val().toUpperCase(),
+               imagen:$("#dataImagen").val().toString(),
+             };
 
-      $.ajax({
-        type:'POST',
-        url:'paises',
-        data: formData,
-        success: function(data) {
-            toastr.success('USUARIO GUARDADO CORRECTAMENTE','Whatsapp ADMIN',{
+          $.ajax({
+            type:'POST',
+            url:'paises',
+            data: formData,
+            success: function(data) {
+                toastr.success('USUARIO GUARDADO CORRECTAMENTE','Whatsapp ADMIN',{
+                    "positionClass": "toast-bottom-right",
+                    "closeButton": true,
+                    "extendedTimeOut": 1
+                  })
+                    $('#nombre_pais').val("");
+                    $('#codigo_pais').val("");
+                    $('#abrev_pais').val("");
+            },
+            error:function(data) {
+              toastr.error('ERROR AL REALIZAR LA PETICION','Whatsapp ADMIN',{
                 "positionClass": "toast-bottom-right",
                 "closeButton": true,
                 "extendedTimeOut": 1
               })
-                $('#nombre_pais').val("");
-                $('#codigo_pais').val("");
-                $('#abrev_pais').val("");
-        },
-        error:function(data) {
-          toastr.error('ERROR AL REALIZAR LA PETICION','Whatsapp ADMIN',{
-            "positionClass": "toast-bottom-right",
-            "closeButton": true,
-            "extendedTimeOut": 1
-          })
-        }
-      });
+            }
+          });
+      } else {
+        toastr.error('EXISTE ALGUN CAMPO VACIO','ADMIN WHATSAPP',{
+          "positionClass": "toast-bottom-right",
+          "closeButton": true,
+          "extendedTimeOut": 1
+        })
+      }
+    }else
+    {
+      toastr.error('NO A SELECCIONADO IMAGEN','ADMIN WHATSAPP',{
+        "positionClass": "toast-bottom-right",
+        "closeButton": true,
+        "extendedTimeOut": 1
+      })
+    }
   })
 
   var contenidofila;
