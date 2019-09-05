@@ -22,7 +22,7 @@
             </div>
 
             <div class="btn-group col-md-12 col-sm-12 col-xs-12 form-group has-feedback">
-              <input type="file" data-role="magic-overlay" data-target="#pictureBtn" data-edit="insertImage" />
+              <input id="imagen" type="file" data-role="magic-overlay" data-target="#pictureBtn" data-edit="insertImage" />
             </div>
 
             <div class="col-md-55">
@@ -30,7 +30,6 @@
                 <div class="image view view-first">
                   <img style="width: 100%; display: block;" src="img/Logo.jpg" alt="image" />
                   <div class="mask">
-                    <p>Your Text</p>
                     <div class="tools tools-bottom">
                       <a href="#"><i class="fa fa-link"></i></a>
                       <a href="#"><i class="fa fa-pencil"></i></a>
@@ -39,7 +38,7 @@
                   </div>
                 </div>
                 <div class="caption">
-                  <p>Snow and Ice Incoming for the South</p>
+                  <p>Icono de Pais</p>
                 </div>
               </div>
             </div>
