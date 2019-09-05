@@ -5,6 +5,7 @@ body{
     font-family:-apple-system, BlinkMacSystemFont, San Francisco, Roboto, Segoe UI, Helvetica Neue, sans-serif;
     height:100vh;
     min-height: 100vh;
+    text-rendering: optimizeLegibility;
 }
 
 h1,h2,h3,h4,h5,h6{
