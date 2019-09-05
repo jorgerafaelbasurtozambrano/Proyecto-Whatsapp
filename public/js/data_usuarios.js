@@ -54,6 +54,7 @@ $(document).ready(function (){
   }
 
   $("#filtrar").keyup(function() {
+    console.log("sd");
     if($("#select_busqueda").val()=="nombre")
     {
       $("#tabla_usuarios tbody tr").each(function() {

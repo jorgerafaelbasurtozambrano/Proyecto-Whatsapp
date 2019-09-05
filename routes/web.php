@@ -32,6 +32,7 @@ Route::resource('/paises', 'paisController');
 //RUTAS
 Route::get('/home', 'usuarioController@index');
 Route::get('/listar', 'usuarioController@listar_panel');
+Route::get('/listaPaises', 'paisController@lista');
 
 Route::get('/nuevo-formulario', 'formulariosController@index');
 

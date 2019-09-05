@@ -22,28 +22,14 @@
             </div>
 
             <div class="btn-group col-md-12 col-sm-12 col-xs-12 form-group has-feedback">
-              <input id="imagen" type="file" data-role="magic-overlay" data-target="#pictureBtn" data-edit="insertImage" />
+              <input accept="image/jpeg,image/jpg,image/ico,.svg" id="imagen" type="file" data-role="magic-overlay" data-target="#pictureBtn" data-edit="insertImage" />
             </div>
 
             <div class="col-md-55">
-              <div class="thumbnail">
-                <div class="image view view-first">
-                  <img style="width: 100%; display: block;" src="img/Logo.jpg" alt="image" />
-                  <div class="mask">
-                    <div class="tools tools-bottom">
-                      <a href="#"><i class="fa fa-link"></i></a>
-                      <a href="#"><i class="fa fa-pencil"></i></a>
-                      <a href="#"><i class="fa fa-times"></i></a>
-                    </div>
-                  </div>
+                <div class="image view view-first" style="background-repeat:no-repeat;background-size:cover;" >
+                  <img id="imagen_pais" width="100%" height="100%" src="img/Logo.jpg" alt="image" />
                 </div>
-                <div class="caption">
-                  <p>Icono de Pais</p>
-                </div>
-              </div>
             </div>
-
-
           </div>
         </div>
 
@@ -62,3 +48,17 @@
     </div>
   </div>
 </div>
+<input id="dataImagen" type="hidden" name="name" value="">
+
+<script>
+  document.getElementById("imagen").onchange=function() {
+    var reader = new FileReader();
+    reader.readAsDataURL(event.srcElement.files[0]);
+    var me = this;
+    reader.onload = function () {
+      var fileContent = reader.result;
+      $("#imagen_pais").attr('src',fileContent);
+      $("#dataImagen").val(fileContent);
+    }
+  }
+</script>
