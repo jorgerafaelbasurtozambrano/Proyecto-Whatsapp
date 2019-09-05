@@ -50,7 +50,7 @@
                                <td id=<?php echo $seleccion_codigopais?> >{{$data['codigo']}}</td>
 
                                <td class="fix-table">
-                                     <div class=" fix-image-table" > 
+                                     <div class=" fix-image-table" >
                                        <img src="{{$data['imagen']}}" alt="image" />
                                 </div>
                                </td>

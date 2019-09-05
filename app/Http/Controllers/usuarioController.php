@@ -24,7 +24,10 @@ class usuarioController extends Controller
     {
         $verificacion_listar = true;
         $usuarios_obtenidos = tabla_usuariosModel::all();
-        return view('adminlte::home4', compact('verificacion_listar', 'usuarios_obtenidos'));
+        $paises_datos=paisModel::all();
+        $dato_completos=tabla_usuariosModel::with('getPais')->get();
+        $usuarios_obtenidos=$dato_completos;
+        return view('adminlte::home4', compact('verificacion_listar', 'usuarios_obtenidos','paises_datos'));
     }
 
     /**
@@ -34,7 +37,6 @@ class usuarioController extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**
@@ -48,6 +50,7 @@ class usuarioController extends Controller
         $nuevo_usuariosbase = new tabla_usuariosModel;
         $nuevo_usuariosbase->nombre=$request->nombre;
         $nuevo_usuariosbase->numero_telefono=$request->telefono;
+        $nuevo_usuariosbase->id_pais=$request->idpais;
         $nuevo_usuariosbase->save();
     }
 
@@ -90,6 +93,7 @@ class usuarioController extends Controller
         $nuevo_usuariosbase = tabla_usuariosModel::find($request->id);
         $nuevo_usuariosbase->nombre=$request->nombre;
         $nuevo_usuariosbase->numero_telefono=$request->telefono;
+        $nuevo_usuariosbase->id_pais=$request->idpais;
         $nuevo_usuariosbase->save();
     }
 
