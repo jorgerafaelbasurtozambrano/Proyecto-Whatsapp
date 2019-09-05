@@ -14,16 +14,28 @@
                     <span class="fa fa-id-card form-control-feedback left" aria-hidden="true" style="font-size:18px;"></span>
               </div>
               <div class="col-md-12 col-sm-12 col-xs-12 form-group has-feedback ">
-              <label for="nombre">Numero:</label>
+                    <label for="nombre">Numero:</label>
                     <input type="number" class="form-control has-feedback-left btn-form-nuevouser" id="numero_usuarionuevo" placeholder="Numero de Telefono">
                     <span class="fa fa-whatsapp form-control-feedback left" aria-hidden="true" style="font-size:18px;"></span>
                </div>
-                      <div class="form-group text-center">
-                        <div class="col-md-12 col-sm-12 col-xs-12 col-md-offset-3 boton-guardar">
-                            <br />
-                          <button type="button" class="btn btn-success btn-mas-form-user" id="nuevo_usuario" value="Añadir">Guardar usuario</button>
-                        </div>
-                      </div>
+               <div class="col-md-12 col-sm-12 col-xs-12 form-group has-feedback ">
+                       <label for="nombre">Pais:</label>
+                       <select id="select_pregruntas" class="form-control has-feedback-left btn-form-nuevouser" >
+                          <option value="" selected disabled class="opcion-disable">Seleccione una pregunta</option>
+                          
+                       </select>
+                       <span class="" aria-hidden="true"></span>
+               </div>
+
+
+
+
+               <div class="form-group text-center">
+                 <div class="col-md-12 col-sm-12 col-xs-12 col-md-offset-3 boton-guardar">
+                   <br />
+                   <button type="button" class="btn btn-success btn-mas-form-user" id="nuevo_usuario" value="Añadir">Guardar usuario</button>
+                 </div>
+               </div>
             </form>
         </div>
     </div>

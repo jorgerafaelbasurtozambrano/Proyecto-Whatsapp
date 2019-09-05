@@ -32,19 +32,34 @@
                             <th class="column-title">ABREVIATURA </th>
                             <th class="column-title">Codigo </th>
                             <th class="column-title ">Logo </th>
+                            <th class="column-title ">Opciones </th>
                           </tr>
                         </thead>
                         <tbody>
                           @foreach($paises_datos as $data)
                             <tr class="even pointer" >
-                               <td>{{$data['nombre']}}</td>
-                               <td>{{$data['abreviatura']}}</td>
-                               <td>{{$data['codigo']}}</td>
+                                <?php
+                                  $seleccion_nombrepais = $data['id'].'nombre';
+                                  $seleccion_abreviaturapais = $data['id'].'abreviatura';
+                                  $seleccion_codigopais = $data['id'].'codigo';
+                                  $seleccion_imagenpais = $data['id'].'imagen';
+                                ?>
+
+                               <td id=<?php echo $seleccion_nombrepais?> >{{$data['nombre']}}</td>
+                               <td id=<?php echo $seleccion_abreviaturapais?> >{{$data['abreviatura']}}</td>
+                               <td id=<?php echo $seleccion_codigopais?> >{{$data['codigo']}}</td>
+
                                <td class="fix-table">
                                      <div class=" fix-image-table" > 
                                        <img src="{{$data['imagen']}}" alt="image" />
                                 </div>
                                </td>
+
+                               <td>
+                                     <button  class="eliminar_pais btn btn-danger btn-red" value="{{$data['id']}}"><i class="fa fa-trash"></i> Eliminar</button>
+                                     <button class="actualizar_pais btn btn-success btn-mas" value="{{$data['id']}}"><i class="fa fa-pencil-square-o"></i>   Editar</button>
+                               </td>
+
                              </tr>
                         @endforeach
                         </tbody>

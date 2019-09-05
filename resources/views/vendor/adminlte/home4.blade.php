@@ -20,5 +20,6 @@
 @endif
 @if(isset($listaPais))
     @include('paises.lista')
+    @include('paises.modal')
 @endif
 @endsection

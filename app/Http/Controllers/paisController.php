@@ -23,6 +23,11 @@ class paisController extends Controller
       $paises_datos=paisModel::all();
       return view('adminlte::home4', compact('listaPais','paises_datos'));
     }
+    public function buscar_paises($id)
+    {
+      $paises_datos=paisModel::all()->where('id',$id);
+      return Response()->json($paises_datos);
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -80,7 +85,13 @@ class paisController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $dato = paisModel::find($request->idpais);
+      $dato->nombre=$request->nombre_pais;
+      $dato->abreviatura=$request->abreviatura;
+      $dato->codigo=$request->codigo_pais;
+      $dato->imagen=$request->imagen;
+      $dato->save();
+      return Response()->json($dato);
     }
 
     /**
@@ -91,6 +102,7 @@ class paisController extends Controller
      */
     public function destroy($id)
     {
-        //
+      $buscar = paisModel::find($id);
+      $buscar->delete();
     }
 }

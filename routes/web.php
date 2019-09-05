@@ -41,3 +41,4 @@ Route::get('/obtenerPreguntas/{id}','formulariosController@getPreguntas');
 Route::get('/obtenerFormularios','formulariosController@getFormularios');
 
 Route::get('/pais', 'paisController@index');
+Route::get('/getpais/{id}', 'paisController@buscar_paises');

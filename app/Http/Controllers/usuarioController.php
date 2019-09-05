@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\tabla_usuariosModel;
+use App\paisModel;
 class usuarioController extends Controller
 {
     /**
@@ -14,7 +14,8 @@ class usuarioController extends Controller
     public function index()
     {
         $verificacion_usuario = true;
-        return view('adminlte::home4', compact('verificacion_usuario'));
+        $paises_datos=paisModel::all();
+        return view('adminlte::home4', compact('verificacion_usuario','paises_datos'));
     }
 
     //LISTAR
@@ -22,7 +23,7 @@ class usuarioController extends Controller
     public function listar_panel()
     {
         $verificacion_listar = true;
-        $usuarios_obtenidos = tabla_usuariosModel::all(); 
+        $usuarios_obtenidos = tabla_usuariosModel::all();
         return view('adminlte::home4', compact('verificacion_listar', 'usuarios_obtenidos'));
     }
 
