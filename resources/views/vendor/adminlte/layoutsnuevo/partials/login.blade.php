@@ -14,6 +14,9 @@
     <!-- /menu profile quick info -->
 
     <div class="title">GAIA- Administrador de Envio de Formularios</div>
+    <div class="fecha">
+      <span><i class="fa fa-calendar hora"></i><?php echo date(" d-m-Y");?></span>
+    </div>
     </nav>
 
   </div>

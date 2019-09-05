@@ -9,40 +9,46 @@
             <br />
             <form data-parsley-validate class="form-horizontal form-label-left" style="margin:0 0 0 13%;">
             <div class="col-md-12 col-sm-12 col-xs-12 form-group has-feedback">
-              <label for="nombre">Nombre de pais:</label>
-              <input type="text" class="form-control has-feedback-left btn-form-nuevouser" id="nombre_pais" placeholder="Nombres" style="margin-bottom: 20px;" name="nombre">
-                    <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
+              <label for="nombre">Nombre del país:</label>
+              <input type="text" class="form-control has-feedback-left btn-form-nuevouser" id="nombre_pais" placeholder="País" style="margin-bottom: 20px;" name="nombre">
+                    <span class="fa fa-globe form-control-feedback left" aria-hidden="true" style="font-size:18px;"></span>
             </div>
 
             <div class="clearfix"></div>
             <br>
             <div class="col-md-12 col-sm-12 col-xs-12 form-group has-feedback">
-                    <input type="text" class="col-md-3 col-sm-3 col-xs-3 form-control" id="codigo_pais" style="width:8%;margin-right:20px;padding:1%" placeholder="CODIGO">
-                    <input type="text" class="col-md-9 col-sm-9 col-xs-9 form-control" style="width:70%" id="abrev_pais" placeholder="ABREVIATURA">
+            <label for="area" class="fix-label">Codigo de área:</label>
+                    <input type="text" class="col-md-3 col-sm-3 col-xs-3 form-control" id="codigo_pais" style="width:8%;margin-right:20px;padding:1%" placeholder="CA" name="area">
+                    <input type="text" class="col-md-9 col-sm-9 col-xs-9 form-control" style="width:70%" id="abrev_pais" placeholder="Abreviatura">
             </div>
 
-            <div class="btn-group col-md-12 col-sm-12 col-xs-12 form-group has-feedback">
-              <input accept="image/jpeg,image/jpg,image/ico,.svg" id="imagen" type="file" data-role="magic-overlay" data-target="#pictureBtn" data-edit="insertImage" />
+            <div class="fix-imagen">
+
+            <div class="btn-group col-md-6 col-sm-6 col-xs-6 form-group has-feedback btn-mas ">
+            <label for="imagen" >Seleccione una imagen:</label>
+              <input accept="image/jpeg,image/jpg,image/ico,.svg" id="imagen" name="imagen" type="file" data-role="magic-overlay" data-target="#pictureBtn" data-edit="insertImage" />
             </div>
 
-            <div class="col-md-55">
-                <div class="image view view-first" style="background-repeat:no-repeat;background-size:cover;" >
+            <div class="col-md-6 col-sm-6 col-xs-6 ">
+                <div class="image view view-first imagen-wrapper-select fix-position">
                   <img id="imagen_pais" width="100%" height="100%" src="img/Logo.jpg" alt="image" />
                 </div>
             </div>
-          </div>
-        </div>
 
 
-          </div>
-        </div>
-
-                      <div class="form-group text-center">
-                        <div class="col-md-12 col-sm-12 col-xs-12 col-md-offset-3 boton-guardar">
-                            <br />
-                          <button type="button" class="btn btn-success btn-mas-form-user" id="nuevo_pais" value="Añadir">Guardar Pais</button>
-                        </div>
+                <div class="col-md-12 col-sm-12 col-xs-12 col-md-offset-12 form-group text-center">
+                          <button type="button" class="btn btn-success btn-mas-form-user boton-guardar-pais" id="nuevo_pais" value="Añadir">Guardar codigo de área</button>
                       </div>
+
+
+            </div>
+          </div>
+        </div>
+
+
+          </div>
+        </div>
+
             </form>
         </div>
     </div>

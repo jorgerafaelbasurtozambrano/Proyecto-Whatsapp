@@ -11,7 +11,7 @@
             <div class="col-md-12 col-sm-12 col-xs-12 form-group has-feedback">
               <label for="nombre">Nombres:</label>
               <input type="text" class="form-control has-feedback-left btn-form-nuevouser" id="nombre_usuarionuevo" placeholder="Nombres" style="margin-bottom: 20px;" name="nombre">
-                    <span class="fa fa-user form-control-feedback left" aria-hidden="true" style="font-size:18px;"></span>
+                    <span class="fa fa-id-card form-control-feedback left" aria-hidden="true" style="font-size:18px;"></span>
               </div>
               <div class="col-md-12 col-sm-12 col-xs-12 form-group has-feedback ">
               <label for="nombre">Numero:</label>

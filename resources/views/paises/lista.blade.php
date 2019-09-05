@@ -40,12 +40,10 @@
                                <td>{{$data['nombre']}}</td>
                                <td>{{$data['abreviatura']}}</td>
                                <td>{{$data['codigo']}}</td>
-                               <td>
-                                 <div class="col-md-55">
-                                     <div class="image view view-first" style="background-repeat:no-repeat;background-size:cover;" >
-                                       <img width="100%" height="100%" src="{{$data['imagen']}}" alt="image" />
-                                     </div>
-                                 </div>
+                               <td class="fix-table">
+                                     <div class=" fix-image-table" > 
+                                       <img src="{{$data['imagen']}}" alt="image" />
+                                </div>
                                </td>
                              </tr>
                         @endforeach
