@@ -172,7 +172,7 @@ $(document).ready(function (){
                 var tr="";
                 tr+="<tr>";
                 tr+="<td  rowspan="+(item.get_respuestas.length+1)+">"+item.descripcion+"</td>";
-                tr+="<td rowspan="+(item.get_respuestas.length+1)+"> <button value="+item.id+" type='button' class='btn-success add-respuesta' style='border-radius:3px;padding:10px;font-size:14px;border:none;'><i class='fa fa-plus'></i> Respuesta</button></td>";
+                tr+="<td rowspan="+(item.get_respuestas.length+1)+"> <button value="+item.id+" type='button' class='btn-success add-respuesta' style='border-radius:3px;padding:10px;font-size:14px;border:none;'><i class='fa fa-plus'></i> Add Respuesta</button></td>";
                 tr+="</tr>";
                 $("#tabla_preguntas").append(tr);
                 $.each(item.get_respuestas,function(i,item1) {

@@ -1,5 +1,5 @@
 <div class="x_title x_title_fix">
-    <h2>Lista de Usuarios </h2>
+    <h2>Lista de numeros </h2>
     <div class="clearfix"></div>
 </div>
 <div class="col-md-12 col-sm-12 col-xs-12">
@@ -20,8 +20,8 @@
                   			<input  id="filtrar" type="text" class="form-control" placeholder="Buscar">
                   </div>
                   <div class="clearfix"></div>
-                  <hr style="border-width:2px;">
-                    <h4 class="h-fix"> Usuarios Disponibles</h4>
+                  <hr style="border-width:2px;margin:2.4em 0;">
+                    <h4 class="h-fix"> Numeros disponibles</h4>
 
                   <div class="x_content">
                       <div class="table-responsive">
@@ -65,7 +65,7 @@
                     </div>
 
                     <div class="col-md-12 col-sm-12 col-xs-12 form-group has-feedback" style="text-align:center;">
-                      <button class="enviar btn btn-success btn-lista"><i class="fa fa-check-square-o" ></i> Seleccione una encuesta</button>
+                      <button class="enviar btn btn-success btn-lista">Seleccione una encuesta</button>
                       <span class="" aria-hidden="true"></span>
                     </div>
 

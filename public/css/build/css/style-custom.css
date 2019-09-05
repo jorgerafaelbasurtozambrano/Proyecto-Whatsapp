@@ -8,6 +8,10 @@ body{
     text-rendering: optimizeLegibility;
 }
 
+.main_container{
+    background:#31373D;
+}
+
 h1,h2,h3,h4,h5,h6{
     font-weight:500!important;
     font-size:2.8rem;
@@ -84,9 +88,9 @@ body .container.body .right_col{
     width: 216px!important;
   }
 
-div.left_col.scroll-view{
-    border-right: 1px solid #dfe3e8;
-}
+  .nav-md .container.body .right_col{
+      margin-left:216px;
+  }
 
 .col-custom{
     margin-top:52px;
@@ -194,6 +198,37 @@ select{
 
 
 /*******BOTONES******/
+.fix-space{
+    margin-bottom:28px;
+}
+
+.text-left{
+    text-align: left;
+}
+
+.fix-button{
+    margin-top: 3.6px;
+    border-radius:2px;
+    padding: 6px 14px;
+    cursor:pointer;
+}
+
+button:disabled,
+button[disabled]{
+    opacity:.6;
+    background: black;
+}
+
+button[disabled]:hover {
+    opacity:.6;
+    background: black!important;
+}
+
+.form-control{
+    height:40px;
+}
+
+
 .border-r{
     border-radius:5px;
     background-color:#ffffff!important;
@@ -214,7 +249,13 @@ input{
 
 button{
     border:none!important;
-  }
+}
+
+button{
+    
+    font-family:-apple-system, BlinkMacSystemFont, San Francisco, Roboto, Segoe UI, Helvetica Neue, sans-serif;
+    font-weight:500;
+}
 
 .c-refresh>li>a:hover{
     background-color:transparent;
@@ -250,6 +291,14 @@ button{
 
 .top_search .form-control:focus{
     border-right:1px solid rgba(221,226,232,.49);
+}
+
+.form-control-feedback.left{
+    border:none;
+}
+
+.has-feedback label~.form-control-feedback{
+    top:28px;
 }
 /************************/
 
@@ -339,4 +388,9 @@ tr:hover td{
     margin-top:30px;
     background: linear-gradient(to bottom, #6371c7, #5563c1)!important;
     padding:10px;
+}
+
+.font-input{
+    font-size:18px!important;
+    top:2px;
 }
