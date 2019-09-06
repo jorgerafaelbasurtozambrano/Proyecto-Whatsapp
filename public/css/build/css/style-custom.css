@@ -486,7 +486,7 @@ tr:hover td{
 }
 
 #alterar>i{
-    font-size: 18px;
+    font-size: 20px;
 }
 
 .col-custom{
@@ -530,16 +530,14 @@ tr:hover td{
     }
     .fix-button span{
         display:none!important;
-    }
-    .fix-button span{
-            margin-left:0px;
+        margin-left:0px;
     }
     .width-type{
         width:88%;
     }
 }
 
-@media only screen and (max-width: 730px) {
+@media only screen and (max-width: 748px) {
     .width-type{
         width:87%;
     }
