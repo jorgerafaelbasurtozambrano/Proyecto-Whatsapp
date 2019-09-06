@@ -519,6 +519,9 @@ tr:hover td{
 /************MEDIA QUERYS****************/
 
 @media only screen and (max-width: 1024px) {
+    body{
+      font-size:1.2em!important;  
+    }
     .fix-button span{
         display:none!important;
     }
