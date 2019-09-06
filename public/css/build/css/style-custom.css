@@ -518,6 +518,12 @@ tr:hover td{
 
 /************MEDIA QUERYS****************/
 
+@media only screen and (min-width: 1342px) {
+    .col-custom {
+        margin-top: 3.8%!important;
+    }
+}
+
 @media only screen and (max-width: 1024px) {
     body{
       font-size:1.2em!important;  
