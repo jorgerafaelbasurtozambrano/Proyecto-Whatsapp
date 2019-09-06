@@ -44,8 +44,8 @@
             <br>
             <h2 class="h-fix fix-space">Respuesta:</h2>
             <div class="col-md-10 col-sm-10 col-xs-10 form-group has-feedback">
-                    <input type="number" pattern="^[0-9]" min="1" step="1" class="col-md-1 col-sm-1 col-xs-1 form-control" id="puntuacion_preguntas" style="width:8%;margin-right:20px;padding:1%" placeholder="PT.">
-                    <input type="text" class="col-md-9 col-sm-9 col-xs-9 form-control" style="width:89.5%" id="descripcion_pregunta" placeholder="Respuesta">
+                    <input type="number" pattern="^[0-9]" min="1" step="1" class="col-md-1 col-sm-1 col-xs-1 form-control width-col-md" id="puntuacion_preguntas"  placeholder="PT.">
+                    <input type="text" class="col-md-9 col-sm-9 col-xs-9 form-control width-type"  id="descripcion_pregunta" placeholder="Respuesta">
 
             </div>
             <div class="col-md-2 col-sm-2 col-xs-2 form-group has-feedback text-left " >

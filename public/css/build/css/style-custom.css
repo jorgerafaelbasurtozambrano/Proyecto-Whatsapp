@@ -504,6 +504,18 @@ tr:hover td{
 .fix-button span{
     margin-left:3px;
 }
+
+.width-type{
+    width:89.5%;
+}
+
+
+.width-col-md{
+    width:8%;
+    margin-right:20px;
+    padding-right:1%!important;
+}
+
 /************MEDIA QUERYS****************/
 
 @media only screen and (max-width: 1024px) {
@@ -512,6 +524,15 @@ tr:hover td{
     }
     .fix-button span{
             margin-left:0px;
+    }
+    .width-type{
+        width:88%;
+    }
+}
+
+@media only screen and (max-width: 730px) {
+    .width-type{
+        width:87%;
     }
 }
 
@@ -548,6 +569,18 @@ tr:hover td{
     }
     .col-custom {
         margin-top: 33px;
+    }
+
+    .width-type{
+        width:76%;
+    }
+    .width-col-md{
+        width: 20%;
+        margin-right: 6px;
+        padding: 3%;
+    }
+    hr{
+        margin:1.4em 0!important;
     }
 }
 
