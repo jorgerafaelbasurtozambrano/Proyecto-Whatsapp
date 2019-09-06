@@ -20,3 +20,11 @@ jQuery('#alterar').click(function(e) {
       jQuery('#panel').stop(true,true).show("slide", { direction: "left" }, 200);
     }
   });
+
+$('.row').click(function() {
+ $('#panel').fadeOut();
+});
+
+$('#panel').click(function(event){
+ event.stopPropagation();
+});
