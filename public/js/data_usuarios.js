@@ -144,67 +144,87 @@ function obtener_datos(){
     })
 }
 
-$('#nuevo_usuario').on('click', function(){
-    if($('#nuevo_usuario').val()=='Añadir'){
-        $.ajaxSetup({
-            headers:{
-              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-          });
+  $('#nuevo_usuario').on('click', function(){
+    if ($('#nombre_usuarionuevo').val()!="" && $('#numero_usuarionuevo').val()!="" && $("#select_pais").val()!=null) {
+      if($('#nuevo_usuario').val()=='Añadir'){
+          $.ajaxSetup({
+              headers:{
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+              }
+            });
+            var formData={
+              nombre:$('#nombre_usuarionuevo').val().toUpperCase(),
+              telefono:$('#numero_usuarionuevo').val(),
+              idpais:$("#select_pais").val(),
+            };
+            $.ajax({
+              type:'POST',
+              url:'usuarios',
+              data: formData,
+              success: function(data) {
+                  toastr.success('USUARIO GUARDADO CORRECTAMENTE','Whatsapp ADMIN',{
+                      "positionClass": "toast-bottom-right",
+                      "closeButton": true,
+                      "extendedTimeOut": 1
+                    })
+                      $('#nombre_usuarionuevo').val("");
+                      $('#numero_usuarionuevo').val("");
+              },
+              error:function(data) {
+                toastr.error('ERROR AL REALIZAR LA PETICION','Whatsapp ADMIN',{
+                  "positionClass": "toast-bottom-right",
+                  "closeButton": true,
+                  "extendedTimeOut": 1
+                })
+              }
+            });
+      }else if($('#nuevo_usuario').val()=='actualizar'){
           var formData={
-            nombre:$('#nombre_usuarionuevo').val().toUpperCase(),
-            telefono:$('#numero_usuarionuevo').val(),
-          };
-          $.ajax({
-            type:'POST',
-            url:'usuarios',
-            data: formData,
-            success: function(data) {
+              nombre:$('#nombre_usuarionuevo').val().toUpperCase(),
+              telefono:$('#numero_usuarionuevo').val(),
+              idpais:$("#select_pais").val(),
+              id:id_usuario,
+            };
+            $.ajaxSetup({
+              headers:{
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+              }
+            });
+            $.ajax({
+              type:'PUT',
+              url:'usuarios/'+formData.id,
+              data: formData,
+              dataType:'json',
+              success: function(data) {
                 toastr.success('USUARIO GUARDADO CORRECTAMENTE','Whatsapp ADMIN',{
                     "positionClass": "toast-bottom-right",
                     "closeButton": true,
                     "extendedTimeOut": 1
                   })
-                    $('#nombre_usuarionuevo').val("");
-                    $('#numero_usuarionuevo').val("");
-            },
-            error:function(data) {
-              toastr.error('ERROR AL REALIZAR LA PETICION','Whatsapp ADMIN',{
-                "positionClass": "toast-bottom-right",
-                "closeButton": true,
-                "extendedTimeOut": 1
-              })
-            }
-          });
-    }else if($('#nuevo_usuario').val()=='actualizar'){
-        var formData={
-            nombre:$('#nombre_usuarionuevo').val().toUpperCase(),
-            telefono:$('#numero_usuarionuevo').val(),
-            id:id_usuario,
-          };
-          $.ajaxSetup({
-            headers:{
-              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-          });
-          $.ajax({
-            type:'PUT',
-            url:'usuarios/'+formData.id,
-            data: formData,
-            dataType:'json',
-            success: function(data) {
+              },
+              error:function(data) {
+                console.log(data);
+              }
 
-            },
-            error:function(data) {
-              console.log(data);
-            }
+            })
+            $.get('/getpais/'+$("#select_pais").val(),function(data) {
+                $.each(data,function(i,item) {
+                  $("#tabla_usuarios"+" #"+id_usuario+"pais").text(item.nombre);
+                })
+            })
 
-          })
-          $("#tabla_usuarios"+" #"+id_usuario+"nombre").text($("#nombre_usuarionuevo").val());
-          $("#tabla_usuarios"+" #"+id_usuario+"numero").text($("#numero_usuarionuevo").val());
-          $('#actualizar_modal').modal('hide');
+            $("#tabla_usuarios"+" #"+id_usuario+"nombre").text($("#nombre_usuarionuevo").val());
+            $("#tabla_usuarios"+" #"+id_usuario+"numero").text($("#numero_usuarionuevo").val());
+            $('#actualizar_modal').modal('hide');
+      }
+    }else
+    {
+      toastr.error('FALTA ALGUN DATO','Whatsapp ADMIN',{
+        "positionClass": "toast-bottom-right",
+        "closeButton": true,
+        "extendedTimeOut": 1
+      })
     }
-
-})
+  })
 
 })

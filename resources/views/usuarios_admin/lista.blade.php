@@ -34,6 +34,7 @@
                             <th class="column-title">Nombres </th>
                             <th class="column-title">Numero </th>
                             <th class="column-title">Chat ID </th>
+                            <th class="column-title">Pais </th>
                             <th class="column-title ">Opciones </th>
                             <th class="bulk-actions" colspan="7">
                               <a class="antoo" ><span class="action-cnt"> </span> </a>
@@ -49,10 +50,17 @@
                                <?php
                                  $seleccion_nombre = $data['id'].'nombre';
                                  $seleccion_numero = $data['id'].'numero';
+                                 $seleccion_pais = $data['id'].'pais';
                                ?>
                                <td class=" " id=<?php echo $seleccion_nombre?> >{{$data['nombre']}}</td>
                                <td class=" " id=<?php echo $seleccion_numero?> >{{$data['numero_telefono']}}</td>
-                               <td class=" " >{{$data['chatid']}}</td>
+                               <td>{{$data['chatid']}}</td>
+                               @foreach($data->getPais as $value)
+                                <td id=<?php echo $seleccion_pais?> >
+                                      {{$value['nombre']}}
+                                </td>
+                               @endforeach
+
                                <td>
                                      <button  class="eliminar_usuario btn btn-danger btn-red" value="{{$data['id']}}"><i class="fa fa-trash"></i> Eliminar</button>
                                      <button class="actualizar_usuario btn btn-success btn-mas" value="{{$data['id']}}"><i class="fa fa-pencil-square-o"></i>   Editar</button>
