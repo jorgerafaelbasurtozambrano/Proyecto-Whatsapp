@@ -52,7 +52,7 @@
                                <td class="fix-table">
                                      <div class=" fix-image-table" >
                                        <img src="{{$data['imagen']}}" alt="image" />
-                                </div>
+                                     </div>
                                </td>
 
                                <td>
