@@ -20,8 +20,8 @@
                </div>
                <div class="col-md-12 col-sm-12 col-xs-12 form-group has-feedback ">
                        <label for="nombre">Pais:</label>
-                       <select id="select_pais" class="form-control has-feedback-left btn-form-nuevouser" >
-                          <option selected disabled class="opcion-disable">Seleccione una pregunta</option>
+                       <select id="select_pais" class="form-control btn-form-nuevouser" >
+                          <option selected disabled class="opcion-disable">Seleccione un país</option>
                           @foreach ($paises_datos as $paises)
                             <option value="{{$paises['id']}}">{{$paises['nombre']}}</option>
                           @endforeach

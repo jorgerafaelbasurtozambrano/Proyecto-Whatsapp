@@ -486,7 +486,7 @@ tr:hover td{
 }
 
 #alterar>i{
-    font-size: 16px;
+    font-size: 18px;
 }
 
 .col-custom{
@@ -521,8 +521,18 @@ tr:hover td{
 
 }
 
-@media (max-width: 600px){
+@media (max-width: 550px){
     .fecha{
         display: none;
     }
+    .title{
+        font-size:10px;
+    }
+    .col-custom {
+        margin-top: 33px;
+    }
+}
+
+span{
+    z-index:0!important;
 }

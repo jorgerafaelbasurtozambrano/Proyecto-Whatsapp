@@ -7,9 +7,16 @@ $(document).ready(function(){
 })
 
 
-
+/*
    $('#alterar').click(function () {
-    $('#panel').slideToggle(600, function () {
-        $(this).toggleClass('active', $(this).is(':visible'));
-    });
-});
+    $('#panel').toggle(500,"swing");
+});*/
+
+jQuery('#alterar').click(function(e) {
+    e.preventDefault();
+    if (jQuery('#panel').is(":visible") ) {
+      jQuery('#panel').stop(true,true).hide("slide", { direction: "left" }, 200);
+    } else {
+      jQuery('#panel').stop(true,true).show("slide", { direction: "left" }, 200);
+    }
+  });
