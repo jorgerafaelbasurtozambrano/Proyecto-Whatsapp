@@ -15,7 +15,7 @@
                     <span class="fa fa-font form-control-feedback left font-input" aria-hidden="true"></span>
             </div>
             <div class="col-md-2 col-sm-2 col-xs-2 form-group has-feedback text-left " >
-                <button id="guardar_formulario" type="button" class="btn-success btn-mas fix-button"><i class="fa fa-pencil"></i> Insertar titulo</button>
+                <button id="guardar_formulario" type="button" class="btn-success btn-mas fix-button"><i class="fa fa-pencil"></i> <span> Insertar titulo</span></button>
             </div>
 
             <div class="clearfix"></div>
@@ -26,7 +26,7 @@
                     <span class="fa fa-question-circle form-control-feedback left font-input" aria-hidden="true"></span>
             </div>
             <div class="col-md-2 col-sm-2 col-xs-2 form-group has-feedback text-left ">
-                <button id="nueva_pregunta" type="button" class=" btn-success btn-mas fix-button"><i class="fa fa-plus"></i> Add Pregunta</button>
+                <button id="nueva_pregunta" type="button" class=" btn-success btn-mas fix-button"><i class="fa fa-plus"></i><span> Add Pregunta</span></button>
             </div>
             <div class="clearfix"></div>
             <br>
@@ -49,7 +49,7 @@
 
             </div>
             <div class="col-md-2 col-sm-2 col-xs-2 form-group has-feedback text-left " >
-                <button id="nueva_respuesta" type="button" class="btn-success btn-mas fix-button"><i class="fa fa-plus"></i> Add Respuesta</button>
+                <button id="nueva_respuesta" type="button" class="btn-success btn-mas fix-button"><i class="fa fa-plus"></i><span> Add Respuesta</span></button>
             </div>
             <div class="clearfix"></div>
             <br>

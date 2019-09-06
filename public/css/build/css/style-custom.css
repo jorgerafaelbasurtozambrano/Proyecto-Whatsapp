@@ -496,7 +496,25 @@ tr:hover td{
 .main_menu_side{
     z-index:9999999;
 }
+
+.fix-button span{
+    display:inline-block!important;
+}
+
+.fix-button span{
+    margin-left:3px;
+}
 /************MEDIA QUERYS****************/
+
+@media only screen and (max-width: 1024px) {
+    .fix-button span{
+        display:none!important;
+    }
+    .fix-button span{
+            margin-left:0px;
+    }
+}
+
 @media only screen and (max-width: 991px) {
     .profile_pic{
         display:none!important;
