@@ -6,8 +6,10 @@ $(document).ready(function(){
     });
 })
 
-$(document).ready(function(){
-    $("#alterar").click(function(){
-    $("#panel-oculto").toggle(800);
+
+
+   $('#alterar').click(function () {
+    $('#panel').slideToggle(600, function () {
+        $(this).toggleClass('active', $(this).is(':visible'));
     });
-   });
+});

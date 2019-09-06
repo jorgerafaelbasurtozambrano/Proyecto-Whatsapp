@@ -1,4 +1,4 @@
-<div class="col-md-3 left_col col-custom" id="panel-oculto">
+<div class="col-md-3 left_col col-custom" id="panel">
   <div class="left_col scroll-view">
 
 
@@ -11,22 +11,22 @@
 
           <li><a><i class="fa fa-whatsapp"></i> Numeros <span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
-              <li><a href='{{asset("/home")}}'>Agregar Número</a></li>
-              <li><a href='{{asset("/listar")}}'>Lista de Numeros</a></li>
+              <li><a href="/home">Agregar Número</a></li>
+              <li><a href="/listar">Lista de Numeros</a></li>
             </ul>
           </li>
 
           <li><a><i class="fa fa-wpforms"></i> Encuestas <span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
-              <li><a href='{{asset("/nuevo-formulario")}}'>Crear Encuesta</a></li>
+              <li><a href="/nuevo-formulario">Crear Encuesta</a></li>
             </ul>
           </li>
 
           
           <li><a><i class="fa fa-globe"></i>Codigos de Area <span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
-              <li><a href='{{asset("/pais")}}'>Agregar País</a></li>
-              <li><a href='{{asset("/listaPaises")}}'>Lista de Paises</a></li>
+              <li><a href="/pais">Agregar País</a></li>
+              <li><a href="/listaPaises">Lista de Paises</a></li>
             </ul>
           </li>
         </ul>

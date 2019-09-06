@@ -489,6 +489,13 @@ tr:hover td{
     font-size: 16px;
 }
 
+.col-custom{
+    display: block;
+}
+
+.main_menu_side{
+    z-index:9999999;
+}
 /************MEDIA QUERYS****************/
 @media only screen and (max-width: 991px) {
     .profile_pic{
@@ -509,6 +516,7 @@ tr:hover td{
 
     .col-custom{
         margin-top:37px; 
+        display:none;
     }
 
 }
