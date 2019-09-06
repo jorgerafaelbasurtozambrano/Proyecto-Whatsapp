@@ -129,7 +129,7 @@ $(document).ready(function (){
       $("#listaPaises tbody tr").each(function() {
         $(this).show();
         contenidofila=$(this).find('td:eq(0)').html();
-        exp=new RegExp($("#filtrar").val(),'gi');
+        exp=new RegExp($("#filtrar_paises").val(),'gi');
         coincidencia=contenidofila.match(exp);
         if (coincidencia!=null)
         {
@@ -145,8 +145,8 @@ $(document).ready(function (){
     }else if($("#select_busqueda_paises").val()=="numero"){
       $("#listaPaises tbody tr").each(function() {
         $(this).show();
-        contenidofila=$(this).find('td:eq(1)').html();
-        exp=new RegExp($("#filtrar").val(),'gi');
+        contenidofila=$(this).find('td:eq(2)').html();
+        exp=new RegExp($("#filtrar_paises").val(),'gi');
         coincidencia=contenidofila.match(exp);
         if (coincidencia!=null)
         {
