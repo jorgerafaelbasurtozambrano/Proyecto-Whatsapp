@@ -187,6 +187,7 @@ select{
 
   .toggle{
     padding-top:5px;
+    display:none;
     margin-right:-26px;
   }
 
@@ -449,8 +450,8 @@ tr:hover td{
 
 .fix-position{
     position: absolute;
-    top: 25px;
-    right: 85px;
+    top: 24px;
+    right: -61px;
 }
 
 .fix-position >img{
@@ -458,7 +459,7 @@ tr:hover td{
 }
 
 .boton-guardar-pais{
-    margin:18% 0 0 32%;
+    margin:70px 0 0 0;
     background: linear-gradient(to bottom, #6371c7, #5563c1)!important;
     padding:10px;
 }
@@ -478,4 +479,42 @@ tr:hover td{
     max-width: 20%;
     height: 20%;
     max-height: 20%;
+}
+
+#alterar{
+    color:#ffffff;
+}
+
+#alterar>i{
+    font-size: 16px;
+}
+
+/************MEDIA QUERYS****************/
+@media only screen and (max-width: 991px) {
+    .profile_pic{
+        display:none!important;
+    }
+
+    .toggle{
+        display: block;
+    }   
+
+    .nav-md .container.body .right_col{
+        margin:0;
+    }
+
+    .fecha{
+        top:8px;
+    }
+
+    .col-custom{
+        margin-top:37px; 
+    }
+
+}
+
+@media (max-width: 600px){
+    .fecha{
+        display: none;
+    }
 }

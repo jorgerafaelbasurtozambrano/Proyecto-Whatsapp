@@ -34,14 +34,10 @@
                   <img id="imagen_pais" width="100%" height="100%" src="img/Logo.jpg" alt="image" />
                 </div>
             </div>
-
-
-                <div class="col-md-12 col-sm-12 col-xs-12 col-md-offset-12 form-group text-center">
-                          <button type="button" class="btn btn-success btn-mas-form-user boton-guardar-pais" id="nuevo_pais" value="Añadir">Guardar codigo de área</button>
-                      </div>
-
-
             </div>
+            <div class="col-md-12 col-sm-12 col-xs-12 col-md-offset-12 form-group text-center" style="margin-left:-9%;">
+                  <button type="button" class="btn btn-success btn-mas-form-user boton-guardar-pais" id="nuevo_pais" value="Añadir">Guardar codigo de área</button>
+                </div>
           </div>
         </div>
           </div>

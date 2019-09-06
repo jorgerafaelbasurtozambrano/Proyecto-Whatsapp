@@ -2,11 +2,9 @@
 <div class="top_nav">
   <div class="nav_menu nav-gaia" style="background:#ffffff">
     <nav>
-      <div class="nav toggle" style="display:none;" >
-        <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+      <div class="nav toggle"  >
+        <a href="#" id="alterar" ><i class="fa fa-bars"></i></a>
       </div>
-
-
                     <!-- menu profile quick info -->
                     <div class="profile_pic">
                 <img src="img/Logo.jpg" alt="..." class="img-circle profile_img">
@@ -22,3 +20,4 @@
   </div>
 </div>
 <!-- /top navigation -->
+

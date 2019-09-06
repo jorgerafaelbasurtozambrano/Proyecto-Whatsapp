@@ -5,3 +5,9 @@ $(document).ready(function(){
         }
     });
 })
+
+$(document).ready(function(){
+    $("#alterar").click(function(){
+    $("#panel-oculto").toggle(800);
+    });
+   });

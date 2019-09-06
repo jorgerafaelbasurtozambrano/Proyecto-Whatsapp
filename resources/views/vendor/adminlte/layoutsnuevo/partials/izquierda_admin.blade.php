@@ -1,4 +1,4 @@
-<div class="col-md-3 left_col col-custom">
+<div class="col-md-3 left_col col-custom" id="panel-oculto">
   <div class="left_col scroll-view">
 
 
