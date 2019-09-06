@@ -56,7 +56,9 @@
                                <td class=" " id=<?php echo $seleccion_numero?> >{{$data['numero_telefono']}}</td>
                                <td>{{$data['chatid']}}</td>
                                @foreach($data->getPais as $value)
-                                <td id=<?php echo $seleccion_pais?> >{{$value['nombre']}}</td>
+                                <td id=<?php echo $seleccion_pais?> >
+                                      {{$value['nombre']}}
+                                </td>
                                @endforeach
 
                                <td>
