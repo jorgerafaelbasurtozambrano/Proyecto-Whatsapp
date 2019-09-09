@@ -85,7 +85,7 @@ body .container.body .right_col{
 
 .left_col{
     background-color:#31373D;
-    width: 216px!important;
+    width: 216px;
   }
 
   .nav-md .container.body .right_col{
@@ -514,6 +514,11 @@ tr:hover td{
     width:8%;
     margin-right:20px;
     padding-right:1%!important;
+}
+
+#alterar-log>i{
+    color:#ffffff;
+    font-size:18px;
 }
 
 /************MEDIA QUERYS****************/

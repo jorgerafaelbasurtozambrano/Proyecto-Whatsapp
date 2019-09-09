@@ -19,7 +19,6 @@ jQuery('#alterar').click(function(e) {
 
 
 
-
    if (screen.width < 991){
     $('.right_col').click(function() {
         $('#panel').fadeOut();
@@ -29,3 +28,4 @@ jQuery('#alterar').click(function(e) {
         event.stopPropagation();
        });
 }
+

@@ -31,7 +31,7 @@
                               </select>
                               <span class="" aria-hidden="true"></span>
                         <div class="col-md-12 col-sm-12 col-xs-12" style="text-align:center">
-                              <button id="star_mensajes" data-toggle="tooltip" title="Enviar Encuesta!" class="btn btn-success btn-mas"><i class="fa fa-send-o"></i> Enviar Encuesta</button>
+                              <button id="star_mensajes" data-toggle="tooltip" title="Enviar Encuesta!" class="btn btn-success btn-mas">Enviar Encuesta</button>
                         </div>
                       </div>
                       

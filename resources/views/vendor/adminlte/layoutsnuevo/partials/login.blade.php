@@ -11,7 +11,10 @@
               </div>
     <!-- /menu profile quick info -->
 
-    <div class="title">GAIA- Administrador de Envio de Formularios</div>
+    <div class="title">
+      <span>GAIA- Administrador de Envio de Formularios</span>
+      <!-- <a href="#" id="alterar-log" ><i class="fa fa-caret-square-o-left"></i></a> -->
+    </div>
     <div class="fecha">
       <span><i class="fa fa-calendar hora"></i><?php echo date(" d-m-Y");?></span>
     </div>

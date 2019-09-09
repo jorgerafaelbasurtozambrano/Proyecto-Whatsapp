@@ -18,7 +18,7 @@
                     <input type="number" class="form-control has-feedback-left btn-form-nuevouser" id="numero_usuarionuevo" placeholder="Numero de Telefono">
                     <span class="fa fa-whatsapp form-control-feedback left" aria-hidden="true" style="font-size:18px;"></span>
                </div>
-               <div class="col-md-12 col-sm-12 col-xs-12 form-group has-feedback ">
+               <div class="col-md-12 col-sm-12 col-xs-12 form-group has-feedback "style="margin-top:23px;">
                        <label for="nombre">Pais:</label>
                        <select id="select_pais" class="form-control btn-form-nuevouser" >
                           <option selected disabled class="opcion-disable">Seleccione un país</option>
