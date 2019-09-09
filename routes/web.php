@@ -46,3 +46,9 @@ Route::get('/getpais/{id}', 'paisController@buscar_paises');
 
 Route::get('/getPersona/{id}', 'encuestaEnviadaController@obtenerPersona');
 Route::get('/getPersonaEnviada/{id_persona}', 'encuestaEnviadaController@listaEncuestaEnviada');
+
+Route::get('/getPreguntas/{id_formulario}', 'formulariosController@getPreguntasFormulario');
+
+Route::get('/getActivos', 'encuestaEnviadaController@lista_de_activos');
+
+Route::get('/preguntaEnviadas/{idEncuesta}', 'preguntaEnviadaController@obtenerPreguntasEnviadas');

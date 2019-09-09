@@ -3,37 +3,25 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\tablaFormularioModel;
-class formulariosController extends Controller
+use App\Http\Controllers\Controller;
+use App\preguntaEnviadaModel;
+class preguntaEnviadaController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-
-     public function getPreguntasFormulario($idFormulario)
-     {
-         $datos=\App\tablaFormularioModel::with('getPreguntas')->where('id',$idFormulario)->get();
-         return Response()->json($datos);
-     }
+    public function obtenerPreguntasEnviadas($id_encuesta)
+    {
+      $lista=preguntaEnviadaModel::all()->where('id_encuesta_iniciada',$id_encuesta);
+      return Response()->json($lista);
+    }
     public function index()
     {
-        $verificacion_formulario = true;
-        $formularios_obtenidos = tablaFormularioModel::all();
+        //
+    }
 
-        return view('adminlte::home4', compact('verificacion_formulario','formularios_obtenidos'));
-    }
-    public function getFormularios()
-    {
-        $formularios=\App\tablaFormularioModel::all();
-        return Response()->json($formularios);
-    }
-    public function getPreguntas($idFormulario)
-    {
-        $datos=\App\tablaPreguntasModel::with('getRespuestas')->where('idFormulario',$idFormulario)->get();
-        return Response()->json($datos);
-    }
     /**
      * Show the form for creating a new resource.
      *
@@ -52,11 +40,7 @@ class formulariosController extends Controller
      */
     public function store(Request $request)
     {
-        $nuevo_dato=new tablaFormularioModel;
-        $nuevo_dato->descripcion=$request->nombre_formulario;
-        $nuevo_dato->fecha_creacion=$request->fecha_actual;
-        $nuevo_dato->save();
-        return Response()->json($nuevo_dato);
+        //
     }
 
     /**

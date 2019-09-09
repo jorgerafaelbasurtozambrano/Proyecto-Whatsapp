@@ -13,7 +13,6 @@ $(document).ready(function (){
   })
 
   function enviar_mensaje(numero_destino,mensaje) {
-
     var url = 'https://eu64.chat-api.com/instance64580/sendMessage?token=8ozup0arq3ujhzj6';
     var data_envio = {
       phone:numero_destino,
@@ -25,6 +24,44 @@ $(document).ready(function (){
       contentType : 'application/json',
       type : 'POST'
     });
+  }
+
+  function recibir_mensajes() {
+
+  }
+
+  $("#recibir").on('click',function() {
+    enviar_mensajes();
+  })
+
+
+  function enviar_mensajes() {
+    $.get('/getActivos',function(data) {
+        $.each(data,function(i,item) {
+              $.get('/getPersona/'+item.idUsuario,function(data1) {
+                  $.each(data1,function(i1,item1) {
+                      $.get('/getPersonaEnviada/'+item1.id,function(data2) {
+                        $.each(data2,function(i2,item2) {
+                            $.get('/obtenerPreguntas/'+item2.idFormulario,function(data3) {
+                              $.each(data3,function(i3,item3) {
+                                    $.get('/preguntaEnviadas/'+item2.id,function(data4) {
+                                      //condicion cuando no se a enviado ni una pregunta al cliente del formulario asignado
+                                      if(data4=="")
+                                      {
+                                        console.log("persona "+item1.nombre+" "+data4);
+                                      }
+                                      $.each(data4,function(i4,item4) {
+                                        //var numero_telefono=item1.get_pais[0].codigo+item1.numero_telefono;
+                                      })
+                                    })
+                              })
+                            })
+                        })
+                      })
+                  })
+              })
+        })
+    })
   }
 
 
@@ -60,7 +97,7 @@ $(document).ready(function (){
                data: formData,
                success: function(data_final) {
                  var concatenacion=data1[0].get_pais[0].codigo+data1[0].numero_telefono;
-                 var mensaje_text="Hola "+data1[0].nombre+ " es un gusto puedes contestar la siguiente encuesta";
+                 var mensaje_text="Hola *"+data1[0].nombre+ "* es un gusto puedes contestar la siguiente encuesta";
                  enviar_mensaje(concatenacion,mensaje_text)
                  toastr.success('ENVIANDO ENCUESTA','Whatsapp ADMIN',{
                    "positionClass": "toast-bottom-right",
@@ -89,7 +126,7 @@ $(document).ready(function (){
              if(encontrado==false)
              {
                var concatenacion=data1[0].get_pais[0].codigo+data1[0].numero_telefono;
-               var mensaje_text="Hola "+data1[0].nombre+ " es un gusto puedes contestar la siguiente encuesta";
+               var mensaje_text="Hola *"+data1[0].nombre+ "* es un gusto puedes contestar la siguiente encuesta";
                enviar_mensaje(concatenacion,mensaje_text)
              }
            }

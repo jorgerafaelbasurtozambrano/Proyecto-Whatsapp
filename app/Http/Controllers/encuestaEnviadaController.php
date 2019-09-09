@@ -21,7 +21,7 @@ class encuestaEnviadaController extends Controller
 
      public function lista_de_activos()
      {
-        $lista=encuestaEnviadaModel::all()->where('activo',1);
+        $lista=encuestaEnviadaModel::all()->where('activa',1);
         return Response()->json($lista);
      }
 
