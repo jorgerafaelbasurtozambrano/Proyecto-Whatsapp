@@ -34,15 +34,10 @@
                               <button id="star_mensajes" data-toggle="tooltip" title="Enviar Encuesta!" class="btn btn-success btn-mas"><i class="fa fa-send-o"></i> Enviar Encuesta</button>
                         </div>
                       </div>
-                      
-
                 </div>
             </div>
           </div>
         </div>
-
-
-
       <div class="modal-footer">
       </div>
     </div>

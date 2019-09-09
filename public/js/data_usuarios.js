@@ -12,12 +12,92 @@ $(document).ready(function (){
       alert('hola');
   })
 
+  function enviar_mensaje(numero_destino,mensaje) {
+
+    var url = 'https://eu64.chat-api.com/instance64580/sendMessage?token=8ozup0arq3ujhzj6';
+    var data_envio = {
+      phone:numero_destino,
+      body:mensaje,
+    };
+    // Send a request
+    $.ajax(url, {
+      data : JSON.stringify(data_envio),
+      contentType : 'application/json',
+      type : 'POST'
+    });
+  }
+
+
   $('#star_mensajes').on('click',function() {
     var cantidad=$("#lista_usuarios").children().length;
     for(let i=0;i<cantidad;i++)
     {
-      var dato=$("#lista_usuarios").children()[i];
-      var id_usuario=dato.value;
+       var dato=$("#lista_usuarios").children()[i];
+       var id_usuario=dato.value;
+       $.get('/getPersona/'+id_usuario,function(data1) {
+         $.get('/getPersonaEnviada/'+data1[0].id,function(data) {
+           if (data.length==0) {
+             $.ajaxSetup({
+               headers:{
+                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+               }
+             });
+             var d = new Date();
+             var month = d.getMonth()+1;
+             var day = d.getDate();
+             var output = d.getFullYear() + '/' +
+             (month<10 ? '0' : '') + month + '/' +
+             (day<10 ? '0' : '') + day;
+             var formData={
+               fecha_inicio:output,
+               id_usuario:data1[0].id,
+               id_Formulario:$("#encuesta_enviar").val(),
+               activa:1,
+             };
+             $.ajax({
+               type:'POST',
+               url:'encuestaenviada',
+               data: formData,
+               success: function(data_final) {
+                 var concatenacion=data1[0].get_pais[0].codigo+data1[0].numero_telefono;
+                 var mensaje_text="Hola "+data1[0].nombre+ " es un gusto puedes contestar la siguiente encuesta";
+                 enviar_mensaje(concatenacion,mensaje_text)
+                 toastr.success('ENVIANDO ENCUESTA','Whatsapp ADMIN',{
+                   "positionClass": "toast-bottom-right",
+                   "closeButton": true,
+                   "extendedTimeOut": 1
+                 })
+               },
+               error:function(data_final) {
+                 toastr.error('ERROR AL REALIZAR LA PETICION','Whatsapp ADMIN',{
+                   "positionClass": "toast-bottom-right",
+                   "closeButton": true,
+                   "extendedTimeOut": 1
+                 })
+               }
+             })
+           }else
+           {
+             var encontrado=false;
+             $.each(data,function(i,item) {
+               if(item.activa==1)
+               {
+                 alert("a "+data1[0].nombre+" ya se le envio la encuesta");
+                 encontrado=true;
+               }
+             })
+             if(encontrado==false)
+             {
+               var concatenacion=data1[0].get_pais[0].codigo+data1[0].numero_telefono;
+               var mensaje_text="Hola "+data1[0].nombre+ " es un gusto puedes contestar la siguiente encuesta";
+               enviar_mensaje(concatenacion,mensaje_text)
+             }
+           }
+
+
+
+         })
+      })
     }
   })
 
