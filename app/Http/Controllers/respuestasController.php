@@ -12,6 +12,12 @@ class respuestasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+     public function obtenerRespuesta($puntuacion,$idPregunta)
+     {
+       $respuesta=tablaRespuestaModel::all()->where('idPregunta',$idPregunta)->where('puntuacion',$puntuacion);
+       return Response()->json($respuesta);
+     }
+
     public function index()
     {
         //

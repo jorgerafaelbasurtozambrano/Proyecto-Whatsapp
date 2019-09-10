@@ -57,3 +57,5 @@ Route::get('/preguntaEnviadas/{idEncuesta}', 'preguntaEnviadaController@obtenerP
 Route::get('/getPreguntaSinResponder/{idUsuario}', 'preguntaEnviadaController@obtenerPreguntasEnviadaNoRespondida');
 
 Route::get('/getPregunta/{idPregunta}', 'preguntasController@get_respuestas');
+
+Route::get('/obtenerRespuestas/{puntuacion}/{idPregunta}', 'respuestasController@obtenerRespuesta');

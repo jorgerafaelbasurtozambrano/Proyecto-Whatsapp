@@ -16,6 +16,8 @@ class preguntasController extends Controller
       $lista_Preguntas=tablaPreguntasModel::with('getRespuestas')->where('id',$idPregunta)->get();
       return Response()->json($lista_Preguntas);
     }
+
+
     public function index()
     {
         //

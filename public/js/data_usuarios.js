@@ -56,13 +56,14 @@ $(document).ready(function (){
                           {
                             //cuerpo de codigo donde va para realizar el proceso de la respuesta
                             var inicio=1;
-
                             $.get('/getPreguntaSinResponder/'+itemActivos.idUsuario,function(data_Pregunta) {
                               $.each(data_Pregunta,function(respuesta, itemRespuesta) {
                                 $.get('/getPregunta/'+itemRespuesta.idPregunta,function(dataRespuesta) {
                                   var total_respuesta=dataRespuesta[0].get_respuestas.length;
                                   if (contenido>=1 || contenido<=total_respuesta) {
-                                    console.log(contenido+"=>"+typeof(contenido));
+                                    var id_Pregunta=itemRespuesta.idPregunta;
+                                    var puntuacion=contenido;
+                                    console.log("pregunta => "+id_Pregunta+"\n"+"puntuacion =>"+ puntuacion);
                                   } else {
                                     alert('fuera del rango');
                                   }
