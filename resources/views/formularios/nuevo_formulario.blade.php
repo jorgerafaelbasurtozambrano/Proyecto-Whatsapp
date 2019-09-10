@@ -31,7 +31,7 @@
             <div class="clearfix"></div>
             <br>
 
-            <hr style="border-width:2px;margin:4.4em 0;">
+            <hr style="border-width:2px;margin:2.4em 0;">
             <h2 class="h-fix fix-space"> Preguntas:</h2>
             <div class="col-md-10 col-sm-10 col-xs-10 form-group has-feedback">
                     <select id="select_pregruntas" class="form-control" >
