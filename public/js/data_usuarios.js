@@ -29,29 +29,45 @@ $(document).ready(function (){
     recibir_mensajes();
   })
   function recibir_mensajes() {
-    var url = 'https://api.chat-api.com/instance64580/messages?token=8ozup0arq3ujhzj6&lastMessageNumber=2&chatId=593982284179%40c.us';
-    $.get(url, function (data) { // Make a GET request
-      var ultimo_mensaje=data.messages.length;
-      var senderNames=data.messages[ultimo_mensaje-1].senderName;
-      var senderAutor=data.messages[ultimo_mensaje-1].author;
-      var contenido=data.messages[ultimo_mensaje-1].body;
-      senderAutor=senderAutor.replace("@c.us","");
-      $.get('/getActivos',function(data_Usuarios_Activos) {
-        $.each(data_Usuarios_Activos,function(index, itemActivos) {
-            //busca datos de la persona para ver si esta garantiza a enviar mensajes
-            $.get('/getPersona/'+itemActivos.idUsuario,function(data_persona) {
-              $.each(data_persona,function(index1,datos_personales) {
-                var numero_telefono_Concatenado=datos_personales.get_pais[0].codigo+datos_personales.numero_telefono;
-                if(numero_telefono_Concatenado==senderAutor)
-                {
-                  //cuerpo de codigo donde va para realizar el proceso de la respuesta
-                  alert("Usted esta Habilitado")
-                }
+    $.get('/getActivos',function(obtener_datos_activos) {
+      $.each(obtener_datos_activos,function(indexActivos, itemDatosActivos) {
+          //busca datos de la persona que estan en modo de enviar mensajes
+          $.get('/getPersona/'+itemDatosActivos.idUsuario,function(data_persona_Activa) {
+            $.each(data_persona_Activa,function(index1Activa,datos_personales_activa) {
+              var numeroUrl=datos_personales_activa.get_pais[0].codigo+datos_personales_activa.numero_telefono+"%40c.us";
+
+              var url = "https://api.chat-api.com/instance64580/messages?token=8ozup0arq3ujhzj6&lastMessageNumber=2&chatId="+numeroUrl;
+              $.get(url, function (data) { // Make a GET request
+                var ultimo_mensaje=data.messages.length;
+                var senderNames=data.messages[ultimo_mensaje-1].senderName;
+                var senderAutor=data.messages[ultimo_mensaje-1].author;
+                var contenido=data.messages[ultimo_mensaje-1].body;
+                senderAutor=senderAutor.replace("@c.us","");
+                $.get('/getActivos',function(data_Usuarios_Activos) {
+                  $.each(data_Usuarios_Activos,function(index, itemActivos) {
+                      //busca datos de la persona para ver si esta garantiza a enviar mensajes
+                      $.get('/getPersona/'+itemActivos.idUsuario,function(data_persona) {
+                        $.each(data_persona,function(index1,datos_personales) {
+                          var numero_telefono_Concatenado=datos_personales.get_pais[0].codigo+datos_personales.numero_telefono;
+                          if(numero_telefono_Concatenado==senderAutor)
+                          {
+                            //cuerpo de codigo donde va para realizar el proceso de la respuesta
+                            alert("Usted esta Habilitado")
+                          }
+                        });
+                      })
+                  });
+                })
+
+
               });
-            })
-        });
-      })
-    });
+
+
+            });
+          })
+      });
+    })
+
   }
 
   $("#recibir").on('click',function() {
