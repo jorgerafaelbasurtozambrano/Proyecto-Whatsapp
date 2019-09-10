@@ -29,6 +29,7 @@ Route::resource('/preguntas', 'preguntasController');
 Route::resource('/respuestas', 'respuestasController');
 Route::resource('/paises', 'paisController');
 Route::resource('/encuestaenviada', 'encuestaEnviadaController');
+Route::resource('/preguntaenviada', 'preguntaEnviadaController');
 
 //RUTAS
 Route::get('/home', 'usuarioController@index');

@@ -40,7 +40,13 @@ class preguntaEnviadaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $nuevo_dato=new preguntaEnviadaModel;
+        $nuevo_dato->idPregunta=$request->idPregunta;
+        $nuevo_dato->idUsuario=$request->id_usuario;
+        $nuevo_dato->respondida=$request->respondida;
+        $nuevo_dato->id_encuesta_iniciada=$request->id_encuesta_enviada;
+        $nuevo_dato->save();
+        return Response()->json($nuevo_dato);
     }
 
     /**

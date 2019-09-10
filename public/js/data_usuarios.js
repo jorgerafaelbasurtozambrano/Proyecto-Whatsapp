@@ -25,9 +25,22 @@ $(document).ready(function (){
       type : 'POST'
     });
   }
-
+  $("#llegada").on('click',function(parameter) {
+    recibir_mensajes();
+  })
   function recibir_mensajes() {
-
+    var url = 'https://api.chat-api.com/instance64580/messages?token=8ozup0arq3ujhzj6&lastMessageNumber=2&chatId=593982284179%40c.us';
+    $.get(url, function (data) { // Make a GET request
+      var ultimo_mensaje=data.messages.length;
+      var senderNames=data.messages[ultimo_mensaje-1].senderName;
+      var senderAutor=data.messages[ultimo_mensaje-1].author;
+      var contenido=data.messages[ultimo_mensaje-1].body;
+      senderAutor=senderAutor.replace("@c.us","");
+      if(senderAutor!="593969209519@c.us")
+      {
+        console.log(senderNames+" "+senderAutor+ ': \n' + contenido); //Send it to console
+      }
+    });
   }
 
   $("#recibir").on('click',function() {
@@ -36,31 +49,81 @@ $(document).ready(function (){
 
 
   function enviar_mensajes() {
-    $.get('/getActivos',function(data) {
-        $.each(data,function(i,item) {
-              $.get('/getPersona/'+item.idUsuario,function(data1) {
-                  $.each(data1,function(i1,item1) {
-                      $.get('/getPersonaEnviada/'+item1.id,function(data2) {
-                        $.each(data2,function(i2,item2) {
-                            $.get('/obtenerPreguntas/'+item2.idFormulario,function(data3) {
-                              $.each(data3,function(i3,item3) {
-                                    $.get('/preguntaEnviadas/'+item2.id,function(data4) {
-                                      //condicion cuando no se a enviado ni una pregunta al cliente del formulario asignado
-                                      if(data4=="")
-                                      {
-                                        console.log("persona "+item1.nombre+" "+data4);
-                                      }
-                                      $.each(data4,function(i4,item4) {
-                                        //var numero_telefono=item1.get_pais[0].codigo+item1.numero_telefono;
-                                      })
-                                    })
-                              })
-                            })
-                        })
+    $.get('/getActivos',function(data){
+      $.each(data,function(i,item){
+          $.get('/preguntaEnviadas/'+item.id,function(data1) {
+              //condicion para saber cuando a una persona se le a enviado una encuesta
+              //pero no se le a enviado ni una pregunta
+              if (data1.length==0) {
+                  $.get('/obtenerPreguntas/'+item.idFormulario,function(data2) {
+                    var respuesta=""
+                    var cadena_de_envio="Pregunta: "+data2[0].descripcion+"\n";
+                    $.each(data2[0],function(i2,item2) {
+                        respuesta="";
+                        $.each(data2[0].get_respuestas,function(i3,item3) {
+                          respuesta+="  "+item3.puntuacion+"->"+item3.descripcion+"\n";
+                        });
+                    });
+                    var datoUsuarioEnviar="";
+                    var numero_telefonoUsuario="";
+                    $.get('/getPersona/'+item.idUsuario,function(data_usuario) {
+                      $.each(data_usuario,function(iUsuario,itemUsuario) {
+                        datoUsuarioEnviar+="Datos Personales \n";
+                        datoUsuarioEnviar+="  Nombre =>"+itemUsuario.nombre+"\n";
+                        datoUsuarioEnviar+="  Pais =>"+data_usuario[0].get_pais[0].nombre+"\n";
+                        datoUsuarioEnviar+="  Telefono =>"+data_usuario[0].get_pais[0].codigo+itemUsuario.numero_telefono+"\n";
+                        numero_telefonoUsuario=data_usuario[0].get_pais[0].codigo+itemUsuario.numero_telefono;
+                      });
+                      //guardar pregunta que se le envia a la persona
+                      $.ajaxSetup({
+                        headers:{
+                          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        }
+                      });
+                      var formData={
+                        idPregunta:data2[0].id,
+                        id_usuario:item.idUsuario,
+                        respondida:0,
+                        id_encuesta_enviada:item.id,
+                      };
+                      $.ajax({
+                        type:'POST',
+                        url:'preguntaenviada',
+                        data: formData,
+                        success: function(data_final) {
+                          //console.log(datoUsuarioEnviar+"\n"+cadena_de_envio+respuesta);
+                          var texto=cadena_de_envio+respuesta;
+                          //console.log(texto);
+                          //console.log(numero_telefonoUsuario);
+                          enviar_mensaje(numero_telefonoUsuario,texto)
+                          toastr.success('ENVIANDO ENCUESTA','Whatsapp ADMIN',{
+                            "positionClass": "toast-bottom-right",
+                            "closeButton": true,
+                            "extendedTimeOut": 1
+                          })
+                        },
+                        error:function(data_final) {
+                          toastr.error('ERROR AL REALIZAR LA PETICION','Whatsapp ADMIN',{
+                            "positionClass": "toast-bottom-right",
+                            "closeButton": true,
+                            "extendedTimeOut": 1
+                          })
+                        }
                       })
+                      //finaliza
+                    })
                   })
-              })
-        })
+              }else
+              {
+                alert('ya se a enviado alguna pregunta a '+item.idUsuario)
+                $.each(data1,function(iPreguntasEnviadas,itemPreguntasEnviadas) {
+                  console.log(itemPreguntasEnviadas);
+                });
+              }
+
+
+          })
+      })
     })
   }
 
