@@ -179,7 +179,7 @@ select{
     display:inline-block;
 }
   .nav-gaia{
-    background-color: #212529!important;
+    background-color: #1A3865!important;
     color:#ffffff;
     font-weight:600;
   }
@@ -612,7 +612,7 @@ li:hover #panel{
         font-size:10px;
     }
     .col-custom {
-        margin-top: 33px;
+        margin-top: 34px;
     }
 
     .width-type{
