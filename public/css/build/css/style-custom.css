@@ -9,7 +9,7 @@ body{
 }
 
 .main_container{
-    background:#31373D;
+    background:#F4F6F8;
 }
 
 h1,h2,h3,h4,h5,h6{
@@ -68,11 +68,11 @@ select, option{
 }
 
 li>a{
-    color: #ffffff!important;
+    color: #000!important;
 }
 
 li>a>i{
-    color:#919eab;
+    color:#000;
 }
   /*******************/
   /**********PANELI ZQUIERDO**************/
@@ -84,7 +84,7 @@ body .container.body .right_col{
   }
 
 .left_col{
-    background-color:#31373D;
+    background-color:#F4F6F8!important;
     width: 216px;
     transition: all 0.5s ease;
   }
@@ -107,12 +107,13 @@ body .container.body .right_col{
 
 
 .side-menu>li:hover i{
-    color:#ffffff;
+    color:#000!important;
 }
 
-.nav.side-menu>li.active>a >i{
-    color:#ffffff;
+.side-menu>li> i{
+    color:#000!important;
 }
+
 
 .nav-md ul.nav.child_menu li:before{
     background: transparent;
@@ -130,7 +131,7 @@ body .container.body .right_col{
 /**********BOTON PANEL*****************/
 .nav.side-menu>li>a:hover{
     background-image: linear-gradient(rgba(223,227,232,.3),rgba(223,227,232,.3));
-    color:#ffffff!important;
+    color:#000!important;
 }
 
 .nav.side-menu>li.active>a{
@@ -145,6 +146,7 @@ body .container.body .right_col{
 /****************PANEL DERECHO***************/
 .main_container .top_nav{
     margin-left:0px;
+    background: #F4F6F8;
 }
 /*******************************************/
 .x_panel{

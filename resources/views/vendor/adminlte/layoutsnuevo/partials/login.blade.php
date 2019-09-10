@@ -13,6 +13,7 @@
 
     <div class="title">
       <span>GAIA CONSULTORES</span>
+
       <div class="switch">
          <a href="#" id="alterar-log" ><i class="fa fa-toggle-on"></i></a> 
         <a href="#" id="alterar-log-der" ><i class="fa fa-toggle-off"></i></a> 
