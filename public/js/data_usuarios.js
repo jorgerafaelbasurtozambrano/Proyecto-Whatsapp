@@ -56,16 +56,18 @@ $(document).ready(function (){
                           {
                             //cuerpo de codigo donde va para realizar el proceso de la respuesta
                             var inicio=1;
+
                             $.get('/getPreguntaSinResponder/'+itemActivos.idUsuario,function(data_Pregunta) {
-                              if(data_Pregunta.length==1)
-                              {
-                                //do{
-                                  $.get('/getPregunta/'+data_Pregunta[0].idPregunta,function(dataRespuestas){
-                                    fin=dataRespuestas[0].get_respuestas.length;
-                                  })
-                                //}while(fin=="")
-                                console.log(fin);
-                              }
+                              $.each(data_Pregunta,function(respuesta, itemRespuesta) {
+                                $.get('/getPregunta/'+itemRespuesta.idPregunta,function(dataRespuesta) {
+                                  var total_respuesta=dataRespuesta[0].get_respuestas.length;
+                                  if (contenido>=1 || contenido<=total_respuesta) {
+                                    console.log(contenido+"=>"+typeof(contenido));
+                                  } else {
+                                    alert('fuera del rango');
+                                  }
+                                })
+                              });
                             })
                           }
                         });
