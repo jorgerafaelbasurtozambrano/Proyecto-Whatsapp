@@ -29,6 +29,7 @@ Route::resource('/preguntas', 'preguntasController');
 Route::resource('/respuestas', 'respuestasController');
 Route::resource('/paises', 'paisController');
 Route::resource('/encuestaenviada', 'encuestaEnviadaController');
+Route::resource('/preguntaenviada', 'preguntaEnviadaController');
 
 //RUTAS
 Route::get('/home', 'usuarioController@index');
@@ -46,3 +47,9 @@ Route::get('/getpais/{id}', 'paisController@buscar_paises');
 
 Route::get('/getPersona/{id}', 'encuestaEnviadaController@obtenerPersona');
 Route::get('/getPersonaEnviada/{id_persona}', 'encuestaEnviadaController@listaEncuestaEnviada');
+
+Route::get('/getPreguntas/{id_formulario}', 'formulariosController@getPreguntasFormulario');
+
+Route::get('/getActivos', 'encuestaEnviadaController@lista_de_activos');
+
+Route::get('/preguntaEnviadas/{idEncuesta}', 'preguntaEnviadaController@obtenerPreguntasEnviadas');
