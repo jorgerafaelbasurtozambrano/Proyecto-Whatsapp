@@ -86,6 +86,7 @@ body .container.body .right_col{
 .left_col{
     background-color:#31373D;
     width: 216px;
+    transition: all 0.5s ease;
   }
 
   .nav-md .container.body .right_col{
@@ -517,15 +518,42 @@ tr:hover td{
 }
 
 #alterar-log>i{
-    color:#ffffff;
+    color:#fff;
     font-size:18px;
+}
+
+#alterar-log-der>i{
+    color:#fff;
+    font-size:18px;
+}
+
+#alterar-log-der{
+    display:none;
+}
+
+.right_col{
+    transition: all ease .5s;
+}
+
+.switch{
+    display:inline-block;
+    vertical-align: middle;
+    margin-left:5px;
+}
+
+li:hover #panel{
+    width:216px!important;
+}
+
+.panel-activo-hover>#panel{
+    width:216px!important;
 }
 
 /************MEDIA QUERYS****************/
 
 @media only screen and (min-width: 1342px) {
     .col-custom {
-        margin-top: 3.8%!important;
+        margin-top: 3.89%!important;
     }
 }
 
@@ -569,7 +597,9 @@ tr:hover td{
         margin-top:37px; 
         display:none;
     }
-
+    .switch{
+        display:none;
+    }
 }
 
 @media (max-width: 550px){

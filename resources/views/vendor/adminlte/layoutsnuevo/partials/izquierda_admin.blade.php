@@ -1,5 +1,5 @@
 <div class="col-md-3 left_col col-custom" id="panel">
-  <div class="left_col scroll-view colizq">
+  <div class="left_col scroll-view">
 
 
     <br />

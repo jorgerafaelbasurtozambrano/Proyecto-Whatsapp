@@ -12,8 +12,11 @@
     <!-- /menu profile quick info -->
 
     <div class="title">
-      <span>GAIA- Administrador de Envio de Formularios</span>
-      <!-- <a href="#" id="alterar-log" ><i class="fa fa-caret-square-o-left"></i></a> -->
+      <span>GAIA CONSULTORES</span>
+      <div class="switch">
+         <a href="#" id="alterar-log" ><i class="fa fa-toggle-on"></i></a> 
+        <a href="#" id="alterar-log-der" ><i class="fa fa-toggle-off"></i></a> 
+      </div>
     </div>
     <div class="fecha">
       <span><i class="fa fa-calendar hora"></i><?php echo date(" d-m-Y");?></span>

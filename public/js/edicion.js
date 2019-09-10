@@ -29,3 +29,66 @@ jQuery('#alterar').click(function(e) {
        });
 }
 
+$( document ).ready(function() {
+  $( "#alterar-log" ).click(function() {
+    $( ".menu-show" ).css( "display", "none" );
+    $( "#panel" ).css( "width", "56px" );
+    $( ".right_col" ).css( "margin-left", "60px" );
+    $( ".main_container" ).css( "background", "#F4F6F8" );
+    $( ".fa-chevron-down" ).css( "display", "none" );
+    $( "#alterar-log-der" ).css( "display", "inline-block" );
+    $( "#alterar-log" ).css( "display", "none" );
+    $('.menu_section>ul').addClass('paneloculto');
+    $('.menu_section>ul').removeClass('panelactivo');
+    var claseoculto = $(".menu_section>ul").hasClass("paneloculto");
+
+
+      if (jQuery('.child_menu').is(":visible") ) {
+        $( ".child_menu" ).css( "display", "none" );
+      } 
+
+      if (claseoculto == true) {
+        $('.left_col').hover(function() {
+          $( "#panel" ).css( "width", "216px" );
+          $( ".menu-show" ).css( "display", "inline-block" );
+          $( ".fa-chevron-down" ).css( "display", "inline-block" );
+
+        }, function() {
+          $( "#panel" ).css( "width", "56px" );
+          $( ".menu-show" ).css( "display", "none" );
+          $( ".fa-chevron-down" ).css( "display", "none" );
+        }); 
+      }
+
+  });
+
+  $( "#alterar-log-der" ).click(function() {
+    $( "#panel" ).css( "width", "216px" );
+    $( ".right_col" ).css( "margin-left", "216px" );
+    $( ".menu-show" ).css( "display", "inline-block" );
+    $( ".fa-chevron-down" ).css( "display", "inline-block" );
+    $( "#alterar-log-der" ).css( "display", "none" );
+    $( "#alterar-log" ).css( "display", "inline-block" );
+    $( "li" ).removeClass( "active" );
+    $('.menu_section>ul').removeClass('paneloculto');
+    $('.menu_section>ul').addClass('panelactivo');
+    var claseactivo = $(".menu_section>ul").hasClass("panelactivo");
+
+    if (claseactivo == true) {
+      $('.left_col').hover(function() {
+        $( "#panel" ).css( "width", "216px" );
+        $( ".menu-show" ).css( "display", "inline-block" );
+        $( ".fa-chevron-down" ).css( "display", "inline-block" );
+      }, function() {
+        $( "#panel" ).css( "width", "216px" );
+        $( ".menu-show" ).css( "display", "inline-block" );
+        $( ".fa-chevron-down" ).css( "display", "inline-block" );
+      }); 
+    }
+
+  });
+});
+
+
+
+
