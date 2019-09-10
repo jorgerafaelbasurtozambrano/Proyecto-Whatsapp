@@ -36,10 +36,21 @@ $(document).ready(function (){
       var senderAutor=data.messages[ultimo_mensaje-1].author;
       var contenido=data.messages[ultimo_mensaje-1].body;
       senderAutor=senderAutor.replace("@c.us","");
-      if(senderAutor!="593969209519@c.us")
-      {
-        console.log(senderNames+" "+senderAutor+ ': \n' + contenido); //Send it to console
-      }
+      $.get('/getActivos',function(data_Usuarios_Activos) {
+        $.each(data_Usuarios_Activos,function(index, itemActivos) {
+            //busca datos de la persona para ver si esta garantiza a enviar mensajes
+            $.get('/getPersona/'+itemActivos.idUsuario,function(data_persona) {
+              $.each(data_persona,function(index1,datos_personales) {
+                var numero_telefono_Concatenado=datos_personales.get_pais[0].codigo+datos_personales.numero_telefono;
+                if(numero_telefono_Concatenado==senderAutor)
+                {
+                  //cuerpo de codigo donde va para realizar el proceso de la respuesta
+                  alert("Usted esta Habilitado")
+                }
+              });
+            })
+        });
+      })
     });
   }
 
