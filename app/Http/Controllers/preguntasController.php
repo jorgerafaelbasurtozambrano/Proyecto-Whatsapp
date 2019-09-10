@@ -11,6 +11,11 @@ class preguntasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function get_respuestas($idPregunta)
+    {
+      $lista_Preguntas=tablaPreguntasModel::with('getRespuestas')->where('id',$idPregunta)->get();
+      return Response()->json($lista_Preguntas);
+    }
     public function index()
     {
         //

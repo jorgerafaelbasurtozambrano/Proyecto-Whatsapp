@@ -53,3 +53,7 @@ Route::get('/getPreguntas/{id_formulario}', 'formulariosController@getPreguntasF
 Route::get('/getActivos', 'encuestaEnviadaController@lista_de_activos');
 
 Route::get('/preguntaEnviadas/{idEncuesta}', 'preguntaEnviadaController@obtenerPreguntasEnviadas');
+
+Route::get('/getPreguntaSinResponder/{idUsuario}', 'preguntaEnviadaController@obtenerPreguntasEnviadaNoRespondida');
+
+Route::get('/getPregunta/{idPregunta}', 'preguntasController@get_respuestas');

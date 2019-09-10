@@ -28,6 +28,9 @@ $(document).ready(function (){
   $("#llegada").on('click',function(parameter) {
     recibir_mensajes();
   })
+
+  var fin=""
+
   function recibir_mensajes() {
     $.get('/getActivos',function(obtener_datos_activos) {
       $.each(obtener_datos_activos,function(indexActivos, itemDatosActivos) {
@@ -52,7 +55,18 @@ $(document).ready(function (){
                           if(numero_telefono_Concatenado==senderAutor)
                           {
                             //cuerpo de codigo donde va para realizar el proceso de la respuesta
-                            alert("Usted esta Habilitado")
+                            var inicio=1;
+                            $.get('/getPreguntaSinResponder/'+itemActivos.idUsuario,function(data_Pregunta) {
+                              if(data_Pregunta.length==1)
+                              {
+                                //do{
+                                  $.get('/getPregunta/'+data_Pregunta[0].idPregunta,function(dataRespuestas){
+                                    fin=dataRespuestas[0].get_respuestas.length;
+                                  })
+                                //}while(fin=="")
+                                console.log(fin);
+                              }
+                            })
                           }
                         });
                       })

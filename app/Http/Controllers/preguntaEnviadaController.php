@@ -17,6 +17,14 @@ class preguntaEnviadaController extends Controller
       $lista=preguntaEnviadaModel::all()->where('id_encuesta_iniciada',$id_encuesta);
       return Response()->json($lista);
     }
+
+    public function obtenerPreguntasEnviadaNoRespondida($id_usuario)
+    {
+      $pregunta=preguntaEnviadaModel::all()->where('idUsuario',$id_usuario)->where('respondida',0);
+      return Response()->json($pregunta);
+    }
+
+
     public function index()
     {
         //
