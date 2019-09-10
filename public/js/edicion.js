@@ -32,9 +32,9 @@ jQuery('#alterar').click(function(e) {
 $( document ).ready(function() {
   $( "#alterar-log" ).click(function() {
     $( ".menu-show" ).css( "display", "none" );
-    $( "#panel" ).css( "width", "56px" );
+    $( "#panel" ).css( "width", "60px" );
     $( ".right_col" ).css( "margin-left", "60px" );
-    $( ".main_container" ).css( "background", "#F4F6F8" );
+    //$( ".main_container" ).css( "background", "#F4F6F8" );
     $( ".fa-chevron-down" ).css( "display", "none" );
     $( "#alterar-log-der" ).css( "display", "inline-block" );
     $( "#alterar-log" ).css( "display", "none" );
@@ -51,12 +51,15 @@ $( document ).ready(function() {
         $('.left_col').hover(function() {
           $( "#panel" ).css( "width", "216px" );
           $( ".menu-show" ).css( "display", "inline-block" );
+          $( ".right_col" ).css( "margin-left", "216px" );
           $( ".fa-chevron-down" ).css( "display", "inline-block" );
 
         }, function() {
-          $( "#panel" ).css( "width", "56px" );
+          $( "#panel" ).css( "width", "60px" );
           $( ".menu-show" ).css( "display", "none" );
+          $( ".right_col" ).css( "margin-left", "60px" );
           $( ".fa-chevron-down" ).css( "display", "none" );
+          $( ".child_menu" ).css( "display", "none" );
         }); 
       }
 
@@ -77,11 +80,15 @@ $( document ).ready(function() {
     if (claseactivo == true) {
       $('.left_col').hover(function() {
         $( "#panel" ).css( "width", "216px" );
+        $( ".right_col" ).css( "margin-left", "216px" );
         $( ".menu-show" ).css( "display", "inline-block" );
         $( ".fa-chevron-down" ).css( "display", "inline-block" );
+
+       
       }, function() {
         $( "#panel" ).css( "width", "216px" );
         $( ".menu-show" ).css( "display", "inline-block" );
+        $( ".right_col" ).css( "margin-left", "216px" );
         $( ".fa-chevron-down" ).css( "display", "inline-block" );
       }); 
     }
