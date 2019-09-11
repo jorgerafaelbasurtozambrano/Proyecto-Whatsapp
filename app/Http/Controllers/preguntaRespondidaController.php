@@ -4,39 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\encuestaEnviadaModel;
-use App\tabla_usuariosModel;
-class encuestaEnviadaController extends Controller
+use App\preguntaRespondidaModel;
+class preguntaRespondidaController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-     public function dato_encuesta($id)
-     {
-        $lista=encuestaEnviadaModel::all()->where('id',$id);
-        return Response()->json($lista);
-     }
-
-     public function listaEncuestaEnviada($id)
-     {
-        $lista=encuestaEnviadaModel::all()->where('idUsuario',$id);
-        return Response()->json($lista);
-     }
-
-     public function lista_de_activos()
-     {
-        $lista=encuestaEnviadaModel::all()->where('activa',1);
-        return Response()->json($lista);
-     }
-
-
-     public function obtenerPersona($id)
-     {
-        $dato_completos=tabla_usuariosModel::with('getPais')->where('id',$id)->get();
-        return Response()->json($dato_completos);
-     }
     public function index()
     {
         //
@@ -60,13 +35,13 @@ class encuestaEnviadaController extends Controller
      */
     public function store(Request $request)
     {
-        $nuevo_encuesta=new encuestaEnviadaModel;
-        $nuevo_encuesta->fecha_inicio=$request->fecha_inicio;
-        $nuevo_encuesta->idUsuario=$request->id_usuario;
-        $nuevo_encuesta->idFormulario=$request->id_Formulario;
-        $nuevo_encuesta->activa=$request->activa;
-        $nuevo_encuesta->save();
-        return Response()->json($nuevo_encuesta);
+      $nuevo_dato=new preguntaRespondidaModel;
+      $nuevo_dato->id_Pregunta=$request->idPregunta;
+      $nuevo_dato->puntuacion=$request->puntuacion;
+      $nuevo_dato->fechaRespuesta=$request->fecha_respuesta;
+      $nuevo_dato->idIniciarEncuesta=$request->id_iniciar_encuesta;
+      $nuevo_dato->save();
+      return Response()->json($nuevo_dato);
     }
 
     /**

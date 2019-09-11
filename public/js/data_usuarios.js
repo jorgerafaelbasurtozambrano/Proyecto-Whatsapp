@@ -28,9 +28,6 @@ $(document).ready(function (){
   $("#llegada").on('click',function(parameter) {
     recibir_mensajes();
   })
-
-  var fin=""
-
   function recibir_mensajes() {
     $.get('/getActivos',function(obtener_datos_activos) {
       $.each(obtener_datos_activos,function(indexActivos, itemDatosActivos) {
@@ -38,13 +35,15 @@ $(document).ready(function (){
           $.get('/getPersona/'+itemDatosActivos.idUsuario,function(data_persona_Activa) {
             $.each(data_persona_Activa,function(index1Activa,datos_personales_activa) {
               var numeroUrl=datos_personales_activa.get_pais[0].codigo+datos_personales_activa.numero_telefono+"%40c.us";
-
-              var url = "https://api.chat-api.com/instance64580/messages?token=8ozup0arq3ujhzj6&lastMessageNumber=2&chatId="+numeroUrl;
+              //https://api.chat-api.com/instance64580/messages?token=8ozup0arq3ujhzj6&lastMessageNumber=10&last=10&chatId=593995856083%40c.us
+              //var url = "https://api.chat-api.com/instance64580/messages?token=8ozup0arq3ujhzj6&lastMessageNumber=2&chatId="+numeroUrl;
+              var url = "https://api.chat-api.com/instance64580/messages?token=8ozup0arq3ujhzj6&lastMessageNumber=10&last=10&chatId="+numeroUrl;
               $.get(url, function (data) { // Make a GET request
                 var ultimo_mensaje=data.messages.length;
                 var senderNames=data.messages[ultimo_mensaje-1].senderName;
                 var senderAutor=data.messages[ultimo_mensaje-1].author;
                 var contenido=data.messages[ultimo_mensaje-1].body;
+                console.log(contenido);
                 senderAutor=senderAutor.replace("@c.us","");
                 $.get('/getActivos',function(data_Usuarios_Activos) {
                   $.each(data_Usuarios_Activos,function(index, itemActivos) {
@@ -60,12 +59,21 @@ $(document).ready(function (){
                               $.each(data_Pregunta,function(respuesta, itemRespuesta) {
                                 $.get('/getPregunta/'+itemRespuesta.idPregunta,function(dataRespuesta) {
                                   var total_respuesta=dataRespuesta[0].get_respuestas.length;
-                                  if (contenido>=1 || contenido<=total_respuesta) {
+                                  if (contenido>=1 && contenido<=total_respuesta) {
+                                    var nombre=datos_personales.nombre;
                                     var id_Pregunta=itemRespuesta.idPregunta;
                                     var puntuacion=contenido;
-                                    console.log("pregunta => "+id_Pregunta+"\n"+"puntuacion =>"+ puntuacion);
+                                    var id_actualizacion=itemRespuesta.id;
+                                    //console.log("nombre =>"+nombre+"\n"+"pregunta => "+id_Pregunta+"\n"+"puntuacion =>"+ puntuacion);
+                                    $.get('/obtenerRespuestas/'+puntuacion+"/"+id_Pregunta,function(retorno){
+                                      $.each(retorno,function(i2,dato_retorono) {
+                                        enviar_mensaje(numero_telefono_Concatenado,"Su respuesta fue *"+dato_retorono.descripcion+"*")
+                                        gurdar_respuesta(id_Pregunta,puntuacion,itemActivos.id);
+                                        actualizarEstado(id_actualizacion);
+                                      });
+                                    })
                                   } else {
-                                    alert('fuera del rango');
+                                    enviar_mensaje(numero_telefono_Concatenado,"Respuesta fuera del limite por favor responda bien")
                                   }
                                 })
                               });
@@ -75,16 +83,85 @@ $(document).ready(function (){
                       })
                   });
                 })
-
-
               });
-
-
             });
           })
       });
     })
+  }
 
+  function actualizarEstado(id_principal) {
+    var formData={
+        respondida:1,
+        id:id_principal,
+      };
+      $.ajaxSetup({
+        headers:{
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+      });
+      $.ajax({
+        type:'PUT',
+        url:'preguntaenviada/'+id_principal,
+        data: formData,
+        success: function(data) {
+          toastr.success('MODIFICACION CORRECTAMENTE','Whatsapp ADMIN',{
+              "positionClass": "toast-bottom-right",
+              "closeButton": true,
+              "extendedTimeOut": 1
+            })
+        },
+        error:function(data) {
+          console.log(data);
+        }
+
+      })
+      $.get('/getpais/'+$("#select_pais").val(),function(data) {
+          $.each(data,function(i,item) {
+            $("#tabla_usuarios"+" #"+id_usuario+"pais").text(item.nombre);
+          })
+      })
+  }
+
+  function gurdar_respuesta(id_pregunta,puntuacion_respuesta,id_inicia_encuesta) {
+     $.ajaxSetup({
+         headers:{
+           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+         }
+       });
+      var d = new Date();
+      var month = d.getMonth()+1;
+      var day = d.getDate();
+      var output = d.getFullYear() + '/' +
+      (month<10 ? '0' : '') + month + '/' +
+      (day<10 ? '0' : '') + day;
+
+      var formData={
+        idPregunta:id_pregunta,
+        puntuacion:puntuacion_respuesta,
+        fecha_respuesta:output,
+        id_iniciar_encuesta:id_inicia_encuesta,
+      };
+       $.ajax({
+         type:'POST',
+         url:'respuestaRecibida',
+         data: formData,
+         success: function(data) {
+           console.log(data);
+             toastr.success('USUARIO GUARDADO CORRECTAMENTE','Whatsapp ADMIN',{
+                 "positionClass": "toast-bottom-right",
+                 "closeButton": true,
+                 "extendedTimeOut": 1
+               })
+         },
+         error:function(data) {
+           toastr.error('ERROR AL REALIZAR LA PETICION','Whatsapp ADMIN',{
+             "positionClass": "toast-bottom-right",
+             "closeButton": true,
+             "extendedTimeOut": 1
+           })
+         }
+       });
   }
 
   $("#recibir").on('click',function() {
@@ -159,19 +236,105 @@ $(document).ready(function (){
                   })
               }else
               {
-                alert('ya se a enviado alguna pregunta a '+item.idUsuario)
-                $.each(data1,function(iPreguntasEnviadas,itemPreguntasEnviadas) {
-                  console.log(itemPreguntasEnviadas);
-                });
+                $.get('/getPreguntaSinResponder/'+item.idUsuario,function(datos_get){
+                  if (datos_get.length==0) {
+                        $.get('/obtenerPreguntas/'+item.idFormulario,function(respuestasGet){
+                          $.each(respuestasGet,function(i1,cadena) {
+                            var encontrado=false;
+                            var save="false";
+                              $.get('/lista_preguntas/'+item.idUsuario,function(dato_respuestas){
+                                $.each(dato_respuestas,function(index,date) {
+                                  if (date.idPregunta==cadena.id) {
+                                    encontrado=true;
+                                  }
+                                });
+                                if (encontrado==false) {
+                                  $.get('/obtenerPreguntas/'+item.idFormulario,function(datosEnviar) {
+                                    console.log("no a sido respondida la pregunta => "+cadena.descripcion);
+                                    var id_envio=cadena.id;
+                                    $.each(datosEnviar,function(ind,datosGet) {
+                                      if(datosGet.id==cadena.id)
+                                      {
+                                          var respuesta="";
+                                          var cadena_de_envio="Pregunta: "+datosGet.descripcion+"\n";
+                                          $.each(datosGet.get_respuestas,function(i3,item3) {
+                                            respuesta+="  "+item3.puntuacion+"->"+item3.descripcion+"\n";
+                                          });
+                                          var id_Pregunta=datosGet.id;
+                                          var id_usuario=item.idUsuario;
+                                          var id_encuesta_iniciada=dato_respuestas[0].id_encuesta_iniciada;
+
+                                          var numero_telefonoUsuario="";
+                                          $.get('/getPersona/'+item.idUsuario,function(data_usuario) {
+                                            $.each(data_usuario,function(iUsuario,itemUsuario) {
+                                              numero_telefonoUsuario=data_usuario[0].get_pais[0].codigo+itemUsuario.numero_telefono;
+                                            });
+                                            console.log(item.idUsuario);
+                                            $.get('/getPreguntaSinResponder/'+item.idUsuario,function(datos_get1){
+                                              console.log(datos_get1);
+                                              if (datos_get1.length==0) {
+                                                enviarNuevaPregunta(id_Pregunta,id_usuario,id_encuesta_iniciada,(cadena_de_envio+respuesta),numero_telefonoUsuario);
+                                                enviar_mensajes();
+                                              }else
+                                              {
+                                                alert("existe una pregunta sin responder")
+                                              }
+                                            })
+                                          })
+                                      }
+                                    });
+                                  })
+                                }else
+                                {
+                                    console.log("ya a sido respondida la pregunta => "+cadena.descripcion);
+                                }
+                              })
+                          });
+                        })
+                  }else{
+                    alert("existe una pregunta sin responder")
+                  }
+                })
               }
-
-
           })
       })
     })
+
   }
-
-
+  function enviarNuevaPregunta(id_pregunta,id_Usuario,id_encuesta_iniciada,texto_enviar,numero_telefonoUsuario) {
+    $.ajaxSetup({
+      headers:{
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      }
+    });
+    var formData={
+      idPregunta:id_pregunta,
+      id_usuario:id_Usuario,
+      respondida:0,
+      id_encuesta_enviada:id_encuesta_iniciada,
+    };
+    $.ajax({
+      type:'POST',
+      url:'preguntaenviada',
+      data: formData,
+      success: function(data_final) {
+        enviar_mensaje(numero_telefonoUsuario,texto_enviar)
+        toastr.success('ENVIANDO ENCUESTA','Whatsapp ADMIN',{
+          "positionClass": "toast-bottom-right",
+          "closeButton": true,
+          "extendedTimeOut": 1
+        })
+      },
+      error:function(data_final) {
+        toastr.error('ERROR AL REALIZAR LA PETICION','Whatsapp ADMIN',{
+          "positionClass": "toast-bottom-right",
+          "closeButton": true,
+          "extendedTimeOut": 1
+        })
+      }
+    })
+    //finaliza
+  }
   $('#star_mensajes').on('click',function() {
     var cantidad=$("#lista_usuarios").children().length;
     for(let i=0;i<cantidad;i++)
@@ -233,7 +396,7 @@ $(document).ready(function (){
              if(encontrado==false)
              {
                var concatenacion=data1[0].get_pais[0].codigo+data1[0].numero_telefono;
-               var mensaje_text="Hola *"+data1[0].nombre+ "* es un gusto puedes contestar la siguiente encuesta";
+               var mensaje_text="Hola *"+data1[0].nombre+ "* es un gusto, puedes contestar la siguiente encuesta";
                enviar_mensaje(concatenacion,mensaje_text)
              }
            }
@@ -278,7 +441,6 @@ $(document).ready(function (){
   }
 
   $("#filtrar").keyup(function() {
-    console.log("sd");
     if($("#select_busqueda").val()=="nombre")
     {
       $("#tabla_usuarios tbody tr").each(function() {

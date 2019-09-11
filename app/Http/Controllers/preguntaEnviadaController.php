@@ -24,6 +24,11 @@ class preguntaEnviadaController extends Controller
       return Response()->json($pregunta);
     }
 
+    public function obtenerPreguntasEnviadaUsuario($id_usuario)
+    {
+      $pregunta=preguntaEnviadaModel::all()->where('idUsuario',$id_usuario);
+      return Response()->json($pregunta);
+    }
 
     public function index()
     {
@@ -88,7 +93,9 @@ class preguntaEnviadaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $dato_actualizar = preguntaEnviadaModel::find($request->id);
+        $dato_actualizar->respondida=$request->respondida;
+        $dato_actualizar->save();
     }
 
     /**
