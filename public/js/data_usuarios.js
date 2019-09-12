@@ -43,46 +43,54 @@ $(document).ready(function (){
                 var senderNames=data.messages[ultimo_mensaje-1].senderName;
                 var senderAutor=data.messages[ultimo_mensaje-1].author;
                 var contenido=data.messages[ultimo_mensaje-1].body;
+                var fromMe=data.messages[ultimo_mensaje-1].fromMe;
                 console.log(contenido);
                 senderAutor=senderAutor.replace("@c.us","");
-                $.get('/getActivos',function(data_Usuarios_Activos) {
-                  $.each(data_Usuarios_Activos,function(index, itemActivos) {
-                      //busca datos de la persona para ver si esta garantiza a enviar mensajes
-                      $.get('/getPersona/'+itemActivos.idUsuario,function(data_persona) {
-                        $.each(data_persona,function(index1,datos_personales) {
-                          var numero_telefono_Concatenado=datos_personales.get_pais[0].codigo+datos_personales.numero_telefono;
-                          if(numero_telefono_Concatenado==senderAutor)
-                          {
-                            //cuerpo de codigo donde va para realizar el proceso de la respuesta
-                            var inicio=1;
-                            $.get('/getPreguntaSinResponder/'+itemActivos.idUsuario,function(data_Pregunta) {
-                              $.each(data_Pregunta,function(respuesta, itemRespuesta) {
-                                $.get('/getPregunta/'+itemRespuesta.idPregunta,function(dataRespuesta) {
-                                  var total_respuesta=dataRespuesta[0].get_respuestas.length;
-                                  if (contenido>=1 && contenido<=total_respuesta) {
-                                    var nombre=datos_personales.nombre;
-                                    var id_Pregunta=itemRespuesta.idPregunta;
-                                    var puntuacion=contenido;
-                                    var id_actualizacion=itemRespuesta.id;
-                                    //console.log("nombre =>"+nombre+"\n"+"pregunta => "+id_Pregunta+"\n"+"puntuacion =>"+ puntuacion);
-                                    $.get('/obtenerRespuestas/'+puntuacion+"/"+id_Pregunta,function(retorno){
-                                      $.each(retorno,function(i2,dato_retorono) {
-                                        enviar_mensaje(numero_telefono_Concatenado,"Su respuesta fue *"+dato_retorono.descripcion+"*")
-                                        gurdar_respuesta(id_Pregunta,puntuacion,itemActivos.id);
-                                        actualizarEstado(id_actualizacion);
-                                      });
-                                    })
-                                  } else {
-                                    enviar_mensaje(numero_telefono_Concatenado,"Respuesta fuera del limite por favor responda bien")
-                                  }
-                                })
-                              });
-                            })
-                          }
-                        });
-                      })
-                  });
-                })
+                if(fromMe==true)
+                {
+                  console.log(fromMe);
+                }else
+                {
+                  console.log("false");
+                  $.get('/getActivos',function(data_Usuarios_Activos) {
+                    $.each(data_Usuarios_Activos,function(index, itemActivos) {
+                        //busca datos de la persona para ver si esta garantiza a enviar mensajes
+                        $.get('/getPersona/'+itemActivos.idUsuario,function(data_persona) {
+                          $.each(data_persona,function(index1,datos_personales) {
+                            var numero_telefono_Concatenado=datos_personales.get_pais[0].codigo+datos_personales.numero_telefono;
+                            if(numero_telefono_Concatenado==senderAutor)
+                            {
+                              //cuerpo de codigo donde va para realizar el proceso de la respuesta
+                              var inicio=1;
+                              $.get('/getPreguntaSinResponder/'+itemActivos.idUsuario,function(data_Pregunta) {
+                                $.each(data_Pregunta,function(respuesta, itemRespuesta) {
+                                  $.get('/getPregunta/'+itemRespuesta.idPregunta,function(dataRespuesta) {
+                                    var total_respuesta=dataRespuesta[0].get_respuestas.length;
+                                    if (contenido>=1 && contenido<=total_respuesta) {
+                                      var nombre=datos_personales.nombre;
+                                      var id_Pregunta=itemRespuesta.idPregunta;
+                                      var puntuacion=contenido;
+                                      var id_actualizacion=itemRespuesta.id;
+                                      //console.log("nombre =>"+nombre+"\n"+"pregunta => "+id_Pregunta+"\n"+"puntuacion =>"+ puntuacion);
+                                      $.get('/obtenerRespuestas/'+puntuacion+"/"+id_Pregunta,function(retorno){
+                                        $.each(retorno,function(i2,dato_retorono) {
+                                          //enviar_mensaje(numero_telefono_Concatenado,"Su respuesta fue *"+dato_retorono.descripcion+"*")
+                                          gurdar_respuesta(id_Pregunta,puntuacion,itemActivos.id);
+                                          actualizarEstado(id_actualizacion);
+                                        });
+                                      })
+                                    } else {
+                                      enviar_mensaje(numero_telefono_Concatenado,"Respuesta fuera del limite por favor responda bien")
+                                    }
+                                  })
+                                });
+                              })
+                            }
+                          });
+                        })
+                    });
+                  })
+                }
               });
             });
           })
@@ -236,6 +244,7 @@ $(document).ready(function (){
                   })
               }else
               {
+                var dato_i=0;
                 $.get('/getPreguntaSinResponder/'+item.idUsuario,function(datos_get){
                   if (datos_get.length==0) {
                         $.get('/obtenerPreguntas/'+item.idFormulario,function(respuestasGet){
@@ -253,35 +262,26 @@ $(document).ready(function (){
                                     console.log("no a sido respondida la pregunta => "+cadena.descripcion);
                                     var id_envio=cadena.id;
                                     $.each(datosEnviar,function(ind,datosGet) {
-                                      if(datosGet.id==cadena.id)
-                                      {
-                                          var respuesta="";
-                                          var cadena_de_envio="Pregunta: "+datosGet.descripcion+"\n";
-                                          $.each(datosGet.get_respuestas,function(i3,item3) {
-                                            respuesta+="  "+item3.puntuacion+"->"+item3.descripcion+"\n";
-                                          });
-                                          var id_Pregunta=datosGet.id;
-                                          var id_usuario=item.idUsuario;
-                                          var id_encuesta_iniciada=dato_respuestas[0].id_encuesta_iniciada;
+                                            if(datosGet.id==cadena.id)
+                                            {
+                                                  var respuesta="";
+                                                  var cadena_de_envio="Pregunta: "+datosGet.descripcion+"\n";
+                                                  $.each(datosGet.get_respuestas,function(i3,item3) {
+                                                    respuesta+="  "+item3.puntuacion+"->"+item3.descripcion+"\n";
+                                                  });
+                                                  var id_Pregunta=datosGet.id;
+                                                  var id_usuario=item.idUsuario;
+                                                  var id_encuesta_iniciada=dato_respuestas[0].id_encuesta_iniciada;
 
-                                          var numero_telefonoUsuario="";
-                                          $.get('/getPersona/'+item.idUsuario,function(data_usuario) {
-                                            $.each(data_usuario,function(iUsuario,itemUsuario) {
-                                              numero_telefonoUsuario=data_usuario[0].get_pais[0].codigo+itemUsuario.numero_telefono;
-                                            });
-                                            console.log(item.idUsuario);
-                                            $.get('/getPreguntaSinResponder/'+item.idUsuario,function(datos_get1){
-                                              console.log(datos_get1);
-                                              if (datos_get1.length==0) {
-                                                enviarNuevaPregunta(id_Pregunta,id_usuario,id_encuesta_iniciada,(cadena_de_envio+respuesta),numero_telefonoUsuario);
-                                                enviar_mensajes();
-                                              }else
-                                              {
-                                                alert("existe una pregunta sin responder")
-                                              }
-                                            })
-                                          })
-                                      }
+                                                  var numero_telefonoUsuario="";
+                                                  $.get('/getPersona/'+item.idUsuario,function(data_usuario) {
+                                                    $.each(data_usuario,function(iUsuario,itemUsuario) {
+                                                      numero_telefonoUsuario=data_usuario[0].get_pais[0].codigo+itemUsuario.numero_telefono;
+                                                      enviarNuevaPregunta(id_Pregunta,id_usuario,id_encuesta_iniciada,(cadena_de_envio+respuesta),numero_telefonoUsuario);
+                                                      // enviar_mensajes();
+                                                    });
+                                                  })
+                                            }
                                     });
                                   })
                                 }else
@@ -292,7 +292,7 @@ $(document).ready(function (){
                           });
                         })
                   }else{
-                    alert("existe una pregunta sin responder")
+                    //alert("existe una pregunta sin responder")
                   }
                 })
               }
@@ -302,34 +302,38 @@ $(document).ready(function (){
 
   }
   function enviarNuevaPregunta(id_pregunta,id_Usuario,id_encuesta_iniciada,texto_enviar,numero_telefonoUsuario) {
-    $.ajaxSetup({
-      headers:{
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-      }
-    });
-    var formData={
-      idPregunta:id_pregunta,
-      id_usuario:id_Usuario,
-      respondida:0,
-      id_encuesta_enviada:id_encuesta_iniciada,
-    };
-    $.ajax({
-      type:'POST',
-      url:'preguntaenviada',
-      data: formData,
-      success: function(data_final) {
-        enviar_mensaje(numero_telefonoUsuario,texto_enviar)
-        toastr.success('ENVIANDO ENCUESTA','Whatsapp ADMIN',{
-          "positionClass": "toast-bottom-right",
-          "closeButton": true,
-          "extendedTimeOut": 1
-        })
-      },
-      error:function(data_final) {
-        toastr.error('ERROR AL REALIZAR LA PETICION','Whatsapp ADMIN',{
-          "positionClass": "toast-bottom-right",
-          "closeButton": true,
-          "extendedTimeOut": 1
+    $.get('/getPreguntaSinResponder/'+id_Usuario,function(datos_get){
+      if (datos_get.length==0) {
+        $.ajaxSetup({
+          headers:{
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          }
+        });
+        var formData={
+          idPregunta:id_pregunta,
+          id_usuario:id_Usuario,
+          respondida:0,
+          id_encuesta_enviada:id_encuesta_iniciada,
+        };
+        $.ajax({
+          type:'POST',
+          url:'preguntaenviada',
+          data: formData,
+          success: function(data_final) {
+            enviar_mensaje(numero_telefonoUsuario,texto_enviar)
+            toastr.success('ENVIANDO ENCUESTA','Whatsapp ADMIN',{
+              "positionClass": "toast-bottom-right",
+              "closeButton": true,
+              "extendedTimeOut": 1
+            })
+          },
+          error:function(data_final) {
+            toastr.error('ERROR AL REALIZAR LA PETICION','Whatsapp ADMIN',{
+              "positionClass": "toast-bottom-right",
+              "closeButton": true,
+              "extendedTimeOut": 1
+            })
+          }
         })
       }
     })
@@ -389,7 +393,7 @@ $(document).ready(function (){
              $.each(data,function(i,item) {
                if(item.activa==1)
                {
-                 alert("a "+data1[0].nombre+" ya se le envio la encuesta");
+                 //alert("a "+data1[0].nombre+" ya se le envio la encuesta");
                  encontrado=true;
                }
              })
@@ -400,12 +404,11 @@ $(document).ready(function (){
                enviar_mensaje(concatenacion,mensaje_text)
              }
            }
-
-
-
          })
       })
     }
+    setInterval(enviar_mensajes, 9000);
+    setInterval(recibir_mensajes, 5000);
   })
 
   function recorrerTabla() {
