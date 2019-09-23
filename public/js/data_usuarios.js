@@ -264,23 +264,33 @@ $(document).ready(function (){
                                     $.each(datosEnviar,function(ind,datosGet) {
                                             if(datosGet.id==cadena.id)
                                             {
-                                                  var respuesta="";
-                                                  var cadena_de_envio="Pregunta: "+datosGet.descripcion+"\n";
-                                                  $.each(datosGet.get_respuestas,function(i3,item3) {
-                                                    respuesta+="  "+item3.puntuacion+"->"+item3.descripcion+"\n";
-                                                  });
-                                                  var id_Pregunta=datosGet.id;
-                                                  var id_usuario=item.idUsuario;
-                                                  var id_encuesta_iniciada=dato_respuestas[0].id_encuesta_iniciada;
+                                              $.get('/getPreguntaSinResponder/'+item.idUsuario,function(datos_get_prueba){
+                                                var exite_dato=0;
+                                                $.each(datos_get_prueba, function(index, el) {
+                                                  exite_dato=index;
+                                                });
+                                                console.log(exite_dato);
+                                                if (exite_dato==0) {
+                                                        var respuesta="";
+                                                        var cadena_de_envio="Pregunta: "+datosGet.descripcion+"\n";
+                                                        $.each(datosGet.get_respuestas,function(i3,item3) {
+                                                          respuesta+="  "+item3.puntuacion+"->"+item3.descripcion+"\n";
+                                                        });
+                                                        var id_Pregunta=datosGet.id;
+                                                        var id_usuario=item.idUsuario;
+                                                        var id_encuesta_iniciada=dato_respuestas[0].id_encuesta_iniciada;
 
-                                                  var numero_telefonoUsuario="";
-                                                  $.get('/getPersona/'+item.idUsuario,function(data_usuario) {
-                                                    $.each(data_usuario,function(iUsuario,itemUsuario) {
-                                                      numero_telefonoUsuario=data_usuario[0].get_pais[0].codigo+itemUsuario.numero_telefono;
-                                                      enviarNuevaPregunta(id_Pregunta,id_usuario,id_encuesta_iniciada,(cadena_de_envio+respuesta),numero_telefonoUsuario);
-                                                      // enviar_mensajes();
-                                                    });
-                                                  })
+                                                        var numero_telefonoUsuario="";
+                                                        $.get('/getPersona/'+item.idUsuario,function(data_usuario) {
+                                                          $.each(data_usuario,function(iUsuario,itemUsuario) {
+                                                            numero_telefonoUsuario=data_usuario[0].get_pais[0].codigo+itemUsuario.numero_telefono;
+                                                            enviarNuevaPregunta(id_Pregunta,id_usuario,id_encuesta_iniciada,(cadena_de_envio+respuesta),numero_telefonoUsuario);
+                                                            // enviar_mensajes();
+                                                          });
+                                                        })
+                                                        console.log("no existe dato");
+                                                 }
+                                             })
                                             }
                                     });
                                   })
@@ -299,11 +309,11 @@ $(document).ready(function (){
           })
       })
     })
-
+    recibir_mensajes();
   }
+
+
   function enviarNuevaPregunta(id_pregunta,id_Usuario,id_encuesta_iniciada,texto_enviar,numero_telefonoUsuario) {
-    $.get('/getPreguntaSinResponder/'+id_Usuario,function(datos_get){
-      if (datos_get.length==0) {
         $.ajaxSetup({
           headers:{
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -335,8 +345,6 @@ $(document).ready(function (){
             })
           }
         })
-      }
-    })
     //finaliza
   }
   $('#star_mensajes').on('click',function() {
@@ -408,7 +416,7 @@ $(document).ready(function (){
       })
     }
     setInterval(enviar_mensajes, 9000);
-    setInterval(recibir_mensajes, 5000);
+    //setInterval(recibir_mensajes, 5000);
   })
 
   function recorrerTabla() {
