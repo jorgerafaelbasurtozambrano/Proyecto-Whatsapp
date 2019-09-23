@@ -244,11 +244,9 @@ $(document).ready(function (){
               }else
               {
                 $.get('/getPreguntaSinResponder/'+item.idUsuario,function(datos_get){
+                  let array_datos="";
+                  var datos =new Array();
                   if (datos_get.length==0) {
-                      let array_datos="";
-                      let list = {
-	                       'datos' :[]
-	                      };
 
                         $.get('/obtenerPreguntas/'+item.idFormulario,function(respuestasGet){
                           $.each(respuestasGet,function(i1,cadena) {
@@ -264,9 +262,7 @@ $(document).ready(function (){
                                     //console.log("no a sido respondida la pregunta => "+cadena.descripcion);
                                     array_datos="no a sido respondida la pregunta => "+cadena.descripcion;
                                     var id_envio=cadena.id;
-                                    list.datos.push({
-	                                     "nombre": array_datos,
-  	                                  });
+                                    datos.push(array_datos);
 
                                     $.each(datosEnviar,function(ind,datosGet) {
                                             if(datosGet.id==cadena.id)
@@ -291,7 +287,6 @@ $(document).ready(function (){
                                             }
                                     });
                                   })
-                                  console.log(list.datos);
                                 }else
                                 {
                                     console.log("ya a sido respondida la pregunta => "+cadena.descripcion);
@@ -299,6 +294,7 @@ $(document).ready(function (){
                               })
                               // mostrar array de informacion
                           });
+                          console.log(datos.shift());
                         })
                   }else{
                     alert("existe una pregunta sin responder")
@@ -319,7 +315,8 @@ $(document).ready(function (){
         console.log("todos respondido");
       }
 
-      console.log(datos_get);
+      //console.log(datos_get);
+
       // $.each(datos_get,function(incre,item) {
       //   console.log(item);
       // })
