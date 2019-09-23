@@ -294,8 +294,7 @@ $(document).ready(function (){
                               })
                               // mostrar array de informacion
                           });
-                          console.log(datos.toArray());
-                          console.log(datos.shift());
+                          console.log(datos);
                         })
                   }else{
                     alert("existe una pregunta sin responder")
