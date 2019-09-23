@@ -44,14 +44,13 @@ $(document).ready(function (){
                 var senderAutor=data.messages[ultimo_mensaje-1].author;
                 var contenido=data.messages[ultimo_mensaje-1].body;
                 var fromMe=data.messages[ultimo_mensaje-1].fromMe;
-                console.log(contenido);
                 senderAutor=senderAutor.replace("@c.us","");
                 if(fromMe==true)
                 {
-                  console.log(fromMe);
+                  //console.log(fromMe);
                 }else
                 {
-                  console.log("false");
+                  //console.log("false");
                   $.get('/getActivos',function(data_Usuarios_Activos) {
                     $.each(data_Usuarios_Activos,function(index, itemActivos) {
                         //busca datos de la persona para ver si esta garantiza a enviar mensajes
@@ -155,7 +154,7 @@ $(document).ready(function (){
          url:'respuestaRecibida',
          data: formData,
          success: function(data) {
-           console.log(data);
+           //console.log(data);
              toastr.success('USUARIO GUARDADO CORRECTAMENTE','Whatsapp ADMIN',{
                  "positionClass": "toast-bottom-right",
                  "closeButton": true,
@@ -244,13 +243,16 @@ $(document).ready(function (){
                   })
               }else
               {
-                var dato_i=0;
                 $.get('/getPreguntaSinResponder/'+item.idUsuario,function(datos_get){
                   if (datos_get.length==0) {
+                      let array_datos="";
+                      let list = {
+	                       'datos' :[]
+	                      };
+
                         $.get('/obtenerPreguntas/'+item.idFormulario,function(respuestasGet){
                           $.each(respuestasGet,function(i1,cadena) {
                             var encontrado=false;
-                            var save="false";
                               $.get('/lista_preguntas/'+item.idUsuario,function(dato_respuestas){
                                 $.each(dato_respuestas,function(index,date) {
                                   if (date.idPregunta==cadena.id) {
@@ -259,93 +261,104 @@ $(document).ready(function (){
                                 });
                                 if (encontrado==false) {
                                   $.get('/obtenerPreguntas/'+item.idFormulario,function(datosEnviar) {
-                                    console.log("no a sido respondida la pregunta => "+cadena.descripcion);
+                                    //console.log("no a sido respondida la pregunta => "+cadena.descripcion);
+                                    array_datos="no a sido respondida la pregunta => "+cadena.descripcion;
                                     var id_envio=cadena.id;
+                                    list.datos.push({
+	                                     "nombre": array_datos,
+  	                                  });
+
                                     $.each(datosEnviar,function(ind,datosGet) {
                                             if(datosGet.id==cadena.id)
                                             {
-                                              $.get('/getPreguntaSinResponder/'+item.idUsuario,function(datos_get_prueba){
-                                                var exite_dato=0;
-                                                $.each(datos_get_prueba, function(index, el) {
-                                                  exite_dato=index;
+                                              array_datos+="igual ->"+cadena.id;
+                                              var respuesta="";
+                                              var cadena_de_envio="Pregunta: "+datosGet.descripcion+"\n";
+                                              $.each(datosGet.get_respuestas,function(i3,item3) {
+                                                respuesta+="  "+item3.puntuacion+"->"+item3.descripcion+"\n";
+                                              });
+                                              var id_Pregunta=datosGet.id;
+                                              var id_usuario=item.idUsuario;
+                                              var id_encuesta_iniciada=dato_respuestas[0].id_encuesta_iniciada;
+                                              var numero_telefonoUsuario="";
+                                              $.get('/getPersona/'+item.idUsuario,function(data_usuario) {
+                                                $.each(data_usuario,function(iUsuario,itemUsuario) {
+                                                  numero_telefonoUsuario=data_usuario[0].get_pais[0].codigo+itemUsuario.numero_telefono;
+                                                  enviarNuevaPregunta(id_Pregunta,id_usuario,id_encuesta_iniciada,(cadena_de_envio+respuesta),numero_telefonoUsuario);
+                                                  // enviar_mensajes();
                                                 });
-                                                console.log(exite_dato);
-                                                if (exite_dato==0) {
-                                                        var respuesta="";
-                                                        var cadena_de_envio="Pregunta: "+datosGet.descripcion+"\n";
-                                                        $.each(datosGet.get_respuestas,function(i3,item3) {
-                                                          respuesta+="  "+item3.puntuacion+"->"+item3.descripcion+"\n";
-                                                        });
-                                                        var id_Pregunta=datosGet.id;
-                                                        var id_usuario=item.idUsuario;
-                                                        var id_encuesta_iniciada=dato_respuestas[0].id_encuesta_iniciada;
-
-                                                        var numero_telefonoUsuario="";
-                                                        $.get('/getPersona/'+item.idUsuario,function(data_usuario) {
-                                                          $.each(data_usuario,function(iUsuario,itemUsuario) {
-                                                            numero_telefonoUsuario=data_usuario[0].get_pais[0].codigo+itemUsuario.numero_telefono;
-                                                            enviarNuevaPregunta(id_Pregunta,id_usuario,id_encuesta_iniciada,(cadena_de_envio+respuesta),numero_telefonoUsuario);
-                                                            // enviar_mensajes();
-                                                          });
-                                                        })
-                                                        console.log("no existe dato");
-                                                 }
-                                             })
+                                              })
                                             }
                                     });
                                   })
+                                  console.log(list.datos);
                                 }else
                                 {
                                     console.log("ya a sido respondida la pregunta => "+cadena.descripcion);
                                 }
                               })
+                              // mostrar array de informacion
                           });
                         })
                   }else{
-                    //alert("existe una pregunta sin responder")
+                    alert("existe una pregunta sin responder")
                   }
                 })
               }
           })
       })
     })
-    recibir_mensajes();
   }
 
 
   function enviarNuevaPregunta(id_pregunta,id_Usuario,id_encuesta_iniciada,texto_enviar,numero_telefonoUsuario) {
-        $.ajaxSetup({
-          headers:{
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-          }
-        });
-        var formData={
-          idPregunta:id_pregunta,
-          id_usuario:id_Usuario,
-          respondida:0,
-          id_encuesta_enviada:id_encuesta_iniciada,
-        };
-        $.ajax({
-          type:'POST',
-          url:'preguntaenviada',
-          data: formData,
-          success: function(data_final) {
-            enviar_mensaje(numero_telefonoUsuario,texto_enviar)
-            toastr.success('ENVIANDO ENCUESTA','Whatsapp ADMIN',{
-              "positionClass": "toast-bottom-right",
-              "closeButton": true,
-              "extendedTimeOut": 1
-            })
-          },
-          error:function(data_final) {
-            toastr.error('ERROR AL REALIZAR LA PETICION','Whatsapp ADMIN',{
-              "positionClass": "toast-bottom-right",
-              "closeButton": true,
-              "extendedTimeOut": 1
-            })
-          }
-        })
-    //finaliza
+    $.get('/getPreguntaSinResponder/'+id_Usuario,function(datos_get){
+      if (datos_get.length!=0) {
+        console.log("escoger el primero");
+      }else {
+        console.log("todos respondido");
+      }
+
+      console.log(datos_get);
+      // $.each(datos_get,function(incre,item) {
+      //   console.log(item);
+      // })
+
+      // if (datos_get.length==0) {
+      //     $.ajaxSetup({
+      //       headers:{
+      //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      //       }
+      //     });
+      //     var formData={
+      //       idPregunta:id_pregunta,
+      //       id_usuario:id_Usuario,
+      //       respondida:0,
+      //       id_encuesta_enviada:id_encuesta_iniciada,
+      //     };
+      //     $.ajax({
+      //       type:'POST',
+      //       url:'preguntaenviada',
+      //       data: formData,
+      //       success: function(data_final) {
+      //         enviar_mensaje(numero_telefonoUsuario,texto_enviar)
+      //         toastr.success('ENVIANDO ENCUESTA','Whatsapp ADMIN',{
+      //           "positionClass": "toast-bottom-right",
+      //           "closeButton": true,
+      //           "extendedTimeOut": 1
+      //         })
+      //       },
+      //       error:function(data_final) {
+      //         toastr.error('ERROR AL REALIZAR LA PETICION','Whatsapp ADMIN',{
+      //           "positionClass": "toast-bottom-right",
+      //           "closeButton": true,
+      //           "extendedTimeOut": 1
+      //         })
+      //       }
+      //     })
+      //     //finaliza
+      //   }
+    })
   }
   $('#star_mensajes').on('click',function() {
     var cantidad=$("#lista_usuarios").children().length;
@@ -415,7 +428,7 @@ $(document).ready(function (){
          })
       })
     }
-    setInterval(enviar_mensajes, 9000);
+    //setInterval(enviar_mensajes, 9000);
     //setInterval(recibir_mensajes, 5000);
   })
 
