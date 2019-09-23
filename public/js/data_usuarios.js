@@ -294,6 +294,7 @@ $(document).ready(function (){
                               })
                               // mostrar array de informacion
                           });
+                          console.log(datos.toArray());
                           console.log(datos.shift());
                         })
                   }else{
